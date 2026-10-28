@@ -2,7 +2,9 @@
 
 누베르 호텔 앤 스파 종로점 정적 홈페이지. 요구사항은 [PRD.md](PRD.md)에 있습니다. `docs/`는 초기 상태에서 비어 있어 루트 PRD v2.1을 기준으로 구현했습니다.
 
-구현 범위와 검증 결과는 [docs/IMPLEMENTATION.md](docs/IMPLEMENTATION.md), PRD 이후 확정한 객실 정보와 사진 분류 근거는 [docs/CONTENT_VERIFICATION.md](docs/CONTENT_VERIFICATION.md)에 정리했습니다.
+공개 홈페이지: **https://resumet.github.io/nouvelle-homepage/**
+
+구현 범위와 검증 결과는 [docs/IMPLEMENTATION.md](docs/IMPLEMENTATION.md), PRD 이후 확정한 객실 정보와 사진 분류 근거는 [docs/CONTENT_VERIFICATION.md](docs/CONTENT_VERIFICATION.md), 실제 배포 확인은 [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md)에 정리했습니다.
 
 ## 실행
 
@@ -55,7 +57,7 @@ Astro + TypeScript + Tailwind CSS v4, 정적 11페이지, 모바일 메뉴/고�
 ## GitHub Pages
 
 대상 저장소: `https://github.com/resumet/nouvelle-homepage`.
-예정 URL: `https://resumet.github.io/nouvelle-homepage/` (배포 완료를 의미하지 않습니다).
+공개 URL: `https://resumet.github.io/nouvelle-homepage/`. GitHub Actions 배포와 HTTPS가 활성화되어 있습니다.
 
 1. 이 소스를 저장소 `main`에 올리면 GitHub Actions에서 테스트와 빌드를 수행합니다.
 2. 실제 자료와 사용 권한, 정책 문구를 검수하고 `npm run release:check`가 통과하는지 확인하세요.

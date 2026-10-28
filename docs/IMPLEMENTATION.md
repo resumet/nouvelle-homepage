@@ -33,7 +33,7 @@
 
 Lighthouse 수치는 로컬 미리보기의 모바일 시뮬레이션 측정입니다. 실제 사용자의 네트워크·기기에 따른 결과를 보장하지 않으며, 자동 접근성 검사는 수동 검수를 대체하지 않습니다.
 
-변경 내역: [PR #1](https://github.com/resumet/nouvelle-homepage/pull/1). 배포 워크플로는 `main` push 및 수동 실행을 지원하며, `PUBLISH_SITE=true`일 때 출시 검사를 통과한 산출물만 공개 배포합니다.
+변경 내역: [PR #1](https://github.com/resumet/nouvelle-homepage/pull/1) 병합 완료. [공개 홈페이지](https://resumet.github.io/nouvelle-homepage/)의 11개 경로와 실사진·예약 링크·사용자 정의 404를 검증했습니다. 상세 기록은 [DEPLOYMENT.md](DEPLOYMENT.md)에 있습니다. 배포 워크플로는 `main` push 및 수동 실행을 지원하며, `PUBLISH_SITE=true`일 때 출시 검사를 통과한 산출물만 공개 배포합니다.
 
 ## 반영한 운영 정보
 
