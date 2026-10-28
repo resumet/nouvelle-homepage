@@ -9,6 +9,10 @@
 - 최초 공개 워크플로: https://github.com/resumet/nouvelle-homepage/actions/runs/40638601675 (성공)
 - 배포 방식: GitHub Actions → GitHub Pages. `PUBLISH_SITE=true`, HTTPS 강제 활성화.
 
+## 디자인 개편
+
+2026-10-28, `design-taste-frontend`를 적용한 개편 소스를 `639fe49` 커밋으로 반영했습니다. 기존 URL과 예약 목적지를 유지하며 같은 Pages 워크플로로 배포합니다. 디자인 점검·반응형·접근성·성능 결과는 [DESIGN_REVIEW.md](DESIGN_REVIEW.md)에 있습니다.
+
 ## 실제 공개 주소 검증
 
 - 홈, 객실 목록, 디럭스·스위트 상세, 지하 욕장, 위치, 관광, 문의, 개인정보 안내, 약관, 404 파일 총 11개 경로 HTTP 200.
