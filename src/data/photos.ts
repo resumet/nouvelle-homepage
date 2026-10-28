@@ -262,6 +262,46 @@ export const photos = {
       }
     ]
   },
+  "privateBathGuest": {
+    "src": "images/hotel/private-bath-guest-1280.webp",
+    "alt": "지하 프라이빗 욕장의 탕에서 휴식을 즐기는 투숙객",
+    "width": 1280,
+    "height": 800,
+    "variants": [
+      {
+        "src": "images/hotel/private-bath-guest-640.webp",
+        "width": 640
+      },
+      {
+        "src": "images/hotel/private-bath-guest-960.webp",
+        "width": 960
+      },
+      {
+        "src": "images/hotel/private-bath-guest-1280.webp",
+        "width": 1280
+      }
+    ]
+  },
+  "privateSaunaGuest": {
+    "src": "images/hotel/private-sauna-guest-1280.webp",
+    "alt": "목재 사우나실에서 휴식을 취하는 투숙객",
+    "width": 1280,
+    "height": 800,
+    "variants": [
+      {
+        "src": "images/hotel/private-sauna-guest-640.webp",
+        "width": 640
+      },
+      {
+        "src": "images/hotel/private-sauna-guest-960.webp",
+        "width": 960
+      },
+      {
+        "src": "images/hotel/private-sauna-guest-1280.webp",
+        "width": 1280
+      }
+    ]
+  },
   "privateBathFaucet": {
     "src": "images/hotel/private-bath-faucet-1280.webp",
     "alt": "지하 프라이빗 욕장의 수전과 욕탕 디테일",

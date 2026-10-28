@@ -127,6 +127,22 @@
       "fullSizeBytes": 48358
     },
     {
+      "key": "privateBathGuest",
+      "source": "bath-photo/6870a28e4035c2.82033684.jpeg",
+      "sha256": "4a35d9a25d0eaa0310e1709e8d844ec1e1da2bd0a301d0f1a7643f754cc104f3",
+      "fullSizeWebp": "images/hotel/private-bath-guest-1280.webp",
+      "originalBytes": 92870,
+      "fullSizeBytes": 63930
+    },
+    {
+      "key": "privateSaunaGuest",
+      "source": "bath-photo/6870a2d129e869.52558795.jpeg",
+      "sha256": "96f48d684d7c068708b282729eeb2f6efe354f5363ef2687c00445265f00c197",
+      "fullSizeWebp": "images/hotel/private-sauna-guest-1280.webp",
+      "originalBytes": 87049,
+      "fullSizeBytes": 49732
+    },
+    {
       "key": "privateBathFaucet",
       "source": "room-photos/6870a28e652e52.11071835.jpeg",
       "sha256": "3fc1f5d618f3f73f8cab491303f6dc38c00e9b8632ccd8000ae5df301b9a4313",

@@ -20,7 +20,7 @@ export const hotel = {
   heroImage: photos.roomBathBedroom as HotelImage,
   lobbyImage: photos.lobby as HotelImage,
   soundImage: photos.premiumSound as HotelImage,
-  bathImages: [photos.privateBathOverview, photos.privateBathFaucet, photos.privateBathSide, photos.privateBathEntry, photos.privateBathChanging] as HotelImage[],
+  bathImages: [photos.privateBathOverview, photos.privateBathGuest, photos.privateSaunaGuest, photos.privateBathFaucet, photos.privateBathSide, photos.privateBathEntry, photos.privateBathChanging] as HotelImage[],
 };
 
 export const telephoneHref = `tel:${hotel.phone.replace(/[^\d]/g, '').replace(/^0/, '+82')}`;

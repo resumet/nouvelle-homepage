@@ -12,6 +12,8 @@
   { "key": "roomBathBathroom", "source": "room-photos/6870a542e2b878.97211515.jpeg", "alt": "스위트룸의 흰색 세면대와 거울", "roomType": "premium-suite", "bookingPhotoId": "707148408" },
   { "key": "premiumSound", "source": "room-photos/6870a542d9e601.50424131.jpeg", "alt": "객실 테이블 위에 놓인 돔 형태의 프리미엄 스피커" },
   { "key": "privateBathOverview", "source": "room-photos/6870a28e688d48.21269484.jpeg", "alt": "어두운 타일과 넓은 욕탕으로 구성된 지하 프라이빗 욕장" },
+  { "key": "privateBathGuest", "source": "bath-photo/6870a28e4035c2.82033684.jpeg", "alt": "지하 프라이빗 욕장의 탕에서 휴식을 즐기는 투숙객" },
+  { "key": "privateSaunaGuest", "source": "bath-photo/6870a2d129e869.52558795.jpeg", "alt": "목재 사우나실에서 휴식을 취하는 투숙객" },
   { "key": "privateBathFaucet", "source": "room-photos/6870a28e652e52.11071835.jpeg", "alt": "지하 프라이빗 욕장의 수전과 욕탕 디테일" },
   { "key": "privateBathSide", "source": "room-photos/6870a28e71c0c4.79585940.jpeg", "alt": "지하 프라이빗 욕장의 길게 이어진 욕탕" },
   { "key": "privateBathEntry", "source": "room-photos/6870a28e5eaf62.71987739.jpeg", "alt": "지하 프라이빗 욕장의 욕탕과 옷걸이 공간 전경" },
