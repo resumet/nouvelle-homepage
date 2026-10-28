@@ -2,7 +2,7 @@
 
 누베르 호텔 앤 스파 종로점 정적 홈페이지. 요구사항은 [PRD.md](PRD.md)에 있습니다. `docs/`는 초기 상태에서 비어 있어 루트 PRD v2.1을 기준으로 구현했습니다.
 
-공개 홈페이지: **https://resumet.github.io/nouvelle-homepage/**
+공개 홈페이지: **https://nouvellehotelandspa.com/**
 
 구현 범위와 검증 결과는 [docs/IMPLEMENTATION.md](docs/IMPLEMENTATION.md), PRD 이후 확정한 객실 정보와 사진 분류 근거는 [docs/CONTENT_VERIFICATION.md](docs/CONTENT_VERIFICATION.md), 실제 배포 확인은 [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md)에 정리했습니다.
 
@@ -15,7 +15,7 @@ npm ci
 npm run dev
 ```
 
-로컬 주소: `http://127.0.0.1:4321/nouvelle-homepage/`. PowerShell 실행 정책이 `npm.ps1`을 막으면 `npm.cmd`를 사용하세요.
+로컬 주소: `http://127.0.0.1:4321/`. PowerShell 실행 정책이 `npm.ps1`을 막으면 `npm.cmd`를 사용하세요.
 
 ```sh
 npm test             # 예약 URL 검증
@@ -28,7 +28,7 @@ npm run release:check # 출시 필수 자료 검증 (미등록 상태에서 실�
 
 Astro + TypeScript + Tailwind CSS v4, 정적 11페이지, 모바일 메뉴/고정 예약 CTA, 실사진 확대 갤러리(키보드·터치·ESC·포커스 복귀), 자기 호스팅 글꼴, 기본 한국어 콘텐츠와 다국어 확장 데이터 타입, 페이지별 SEO/구조화 데이터/사이트맵/robots/404, GitHub Pages 워크플로.
 
-페이지: `/`, `/rooms/`, `/rooms/deluxe/`, `/rooms/premium-suite/`, `/facilities/`, `/location/`, `/explore/`, `/contact/`, `/privacy/`, `/terms/`, `/404.html`. 모든 경로는 `/nouvelle-homepage/` 아래에 배포됩니다.
+페이지: `/`, `/rooms/`, `/rooms/deluxe/`, `/rooms/premium-suite/`, `/facilities/`, `/location/`, `/explore/`, `/contact/`, `/privacy/`, `/terms/`, `/404.html`. 모든 경로는 공식 도메인의 루트에 배포됩니다.
 
 ## 실제 자료 등록
 
@@ -59,7 +59,7 @@ Astro + TypeScript + Tailwind CSS v4, 정적 11페이지, 모바일 메뉴/고�
 ## GitHub Pages
 
 대상 저장소: `https://github.com/resumet/nouvelle-homepage`.
-공개 URL: `https://resumet.github.io/nouvelle-homepage/`. GitHub Actions 배포와 HTTPS가 활성화되어 있습니다.
+공개 URL: `https://nouvellehotelandspa.com/`. GitHub Actions 배포가 활성화되어 있으며 DNS 전파 후 HTTPS를 강제 적용합니다.
 
 1. 이 소스를 저장소 `main`에 올리면 GitHub Actions에서 테스트와 빌드를 수행합니다.
 2. 실제 자료와 사용 권한, 정책 문구를 검수하고 `npm run release:check`가 통과하는지 확인하세요.
@@ -67,6 +67,6 @@ Astro + TypeScript + Tailwind CSS v4, 정적 11페이지, 모바일 메뉴/고�
 4. Settings → Secrets and variables → Actions → Variables에 `PUBLISH_SITE=true`를 등록하세요.
 5. `main` push 또는 수동 워크플로 실행 시 출시 자료 검사를 통과한 빌드를 배포합니다. 변수 미설정 상태에서는 빌드만 수행합니다.
 
-GitHub 프로젝트 사이트는 도메인 루트의 `robots.txt`를 직접 관리할 수 없습니다. 생성되는 `/nouvelle-homepage/robots.txt`와 별도로 Search Console에 사이트맵을 제출하세요. 공식 도메인이 확정되면 Astro `site`/`base`, manifest, 산출물 검증 스크립트 및 SEO 경로를 함께 변경하세요.
+공식 도메인 루트에서 `robots.txt`와 `sitemap.xml`을 제공합니다. Search Console에는 `https://nouvellehotelandspa.com/sitemap.xml`을 제출하세요.
 
 현재 자체 폼·DB·예약·결제·로그인·GA4는 없습니다. 개인정보 문서는 실제 홈페이지 동작을 설명하는 초안이며, 운영 주체의 최종 검수가 필요합니다.

@@ -4,8 +4,8 @@ import assert from 'node:assert/strict';
 import { bookingUrl, canBook } from '../src/data/booking.ts';
 
 const root = resolve('dist');
-const base = '/nouvelle-homepage/';
-const site = 'https://resumet.github.io';
+const base = '/';
+const site = 'https://nouvellehotelandspa.com';
 const paths = ['', 'rooms/', 'rooms/deluxe/', 'rooms/premium-suite/', 'facilities/', 'location/', 'explore/', 'contact/', 'privacy/', 'terms/'];
 const pages = [...paths.map(path => `${path}index.html`), '404.html'];
 const titles = new Set();
@@ -75,5 +75,5 @@ await checkCss(root);
 const sitemap = await readFile(join(root, 'sitemap.xml'), 'utf8');
 for (const path of paths) assert.ok(sitemap.includes(`<loc>${site}${base}${path}</loc>`), `Sitemap missing ${path}`);
 assert.ok(!sitemap.includes('404'));
-assert.match(await readFile(join(root, 'robots.txt'), 'utf8'), /Sitemap: https:\/\/resumet.github.io\/nouvelle-homepage\/sitemap.xml/);
+assert.match(await readFile(join(root, 'robots.txt'), 'utf8'), /Sitemap: https:\/\/nouvellehotelandspa.com\/sitemap.xml/);
 console.log(`Verified ${pages.length} pages, ${links} internal references, canonical URLs, sitemap, structured data, CSS/font assets, and booking link attributes.`);

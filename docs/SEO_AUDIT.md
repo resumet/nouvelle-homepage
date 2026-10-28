@@ -1,5 +1,7 @@
 # 누베르 호텔 앤 스파 종로점 SEO 점검 보고서
 
+> 2026-10-28 후속 조치: `nouvellehotelandspa.com`을 GitHub Pages에 연결하고 canonical, sitemap, robots 및 manifest를 공식 도메인 루트 기준으로 전환했습니다. 아래 내용은 전환 전 GitHub 프로젝트 주소를 대상으로 수행한 최초 점검 기록입니다. DNS와 HTTPS 전파가 끝난 뒤 공식 도메인 기준으로 재측정합니다.
+
 - 점검일: 2026-10-28 (KST)
 - 대상: `https://resumet.github.io/nouvelle-homepage/`
 - 범위: 빌드 결과, 공개 HTTP 응답, 메타데이터, 색인 제어, 사이트맵, 구조화 데이터, 콘텐츠 구조, 이미지, 모바일 Lighthouse, 공개 검색 결과

@@ -2,17 +2,19 @@
 
 확인일: 2026-10-28 (한국 시간).
 
-- 공개 주소: https://resumet.github.io/nouvelle-homepage/
+- 공개 주소: https://nouvellehotelandspa.com/
 - 저장소: https://github.com/resumet/nouvelle-homepage
 - 구현 PR: https://github.com/resumet/nouvelle-homepage/pull/1 (병합 완료)
 - 최초 공개 커밋: `1d0305043b5998e4c5199a76c350fc338ab31eaf`
 - 최초 공개 워크플로: https://github.com/resumet/nouvelle-homepage/actions/runs/40638601675 (성공)
-- 배포 방식: GitHub Actions → GitHub Pages. `PUBLISH_SITE=true`, HTTPS 강제 활성화.
+- 배포 방식: GitHub Actions → GitHub Pages. `PUBLISH_SITE=true`; DNS와 인증서 전파 완료 후 HTTPS 강제 적용.
+- 사용자 정의 도메인: `nouvellehotelandspa.com` (Namecheap BasicDNS)
+- DNS: 루트 A 레코드 4개는 GitHub Pages, `www` CNAME은 `resumet.github.io`를 가리킴.
 
 ## 실제 공개 주소 검증
 
 - 홈, 객실 목록, 디럭스·스위트 상세, 지하 욕장, 위치, 관광, 문의, 개인정보 안내, 약관, 404 파일 총 11개 경로 HTTP 200.
-- 각 페이지에 H1 1개와 정확한 프로젝트 하위 경로 canonical 존재.
+- 각 페이지에 H1 1개와 정확한 공식 도메인 canonical 존재.
 - 모든 예약 링크가 동일한 실제 Booking.com 호텔 페이지로 연결.
 - 디럭스 실제 사진 확대·좌우 이동·이미지 디코딩 확인.
 - 375px 화면에서 홈 실사진 전체 로드 및 가로 넘침 없음.
