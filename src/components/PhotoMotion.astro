@@ -1,0 +1,29 @@
+<script>
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  if (!reducedMotion.matches) {
+    const targets = [...document.querySelectorAll<HTMLElement>('.media-frame.has-image, .gallery-thumbnail')];
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('photo-motion-visible');
+        observer.unobserve(entry.target);
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
+
+    targets.forEach((target) => {
+      target.classList.add('photo-motion-target');
+      if (target.matches('.gallery-thumbnail')) {
+        const siblings = [...(target.parentElement?.querySelectorAll(':scope > .gallery-thumbnail') ?? [])];
+        target.style.setProperty('--photo-motion-delay', `${Math.min(siblings.indexOf(target) * 65, 260)}ms`);
+      }
+
+      const bounds = target.getBoundingClientRect();
+      if (bounds.top < window.innerHeight * 0.94 && bounds.bottom > 0) target.classList.add('photo-motion-visible');
+      else observer.observe(target);
+    });
+
+    requestAnimationFrame(() => document.documentElement.classList.add('photo-motion-ready'));
+    window.addEventListener('pagehide', () => observer.disconnect(), { once: true });
+  }
+</script>

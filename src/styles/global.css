@@ -432,3 +432,32 @@
 @media (prefers-reduced-motion: reduce) {
   *,*::before,*::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
 }
+
+/* Photography motion: quiet reveals support the visual hierarchy without competing with the rooms. */
+@keyframes hero-photo-settle {
+  from { opacity: .72; transform: scale(1.035); }
+  to { opacity: 1; transform: scale(1); }
+}
+.photo-motion-ready .hero-photo { animation: hero-photo-settle 1.35s cubic-bezier(.22,.72,.2,1) both; }
+.photo-motion-ready .photo-motion-target:not(.photo-motion-visible) {
+  opacity: 0;
+  transform: translateY(18px);
+}
+.photo-motion-ready .photo-motion-target {
+  transition: opacity .72s cubic-bezier(.22,.72,.2,1), transform .82s cubic-bezier(.22,.72,.2,1);
+  transition-delay: var(--photo-motion-delay, 0ms);
+}
+.photo-motion-ready .photo-motion-target > img {
+  transform: scale(1.025);
+  transition: transform 1.05s cubic-bezier(.22,.72,.2,1);
+}
+.photo-motion-ready .photo-motion-target.photo-motion-visible > img { transform: scale(1); }
+@media (hover: hover) and (pointer: fine) {
+  .photo-motion-ready .room-image-link:hover .photo-motion-visible > img,
+  .photo-motion-ready .gallery-thumbnail.photo-motion-visible:hover > img { transform: scale(1.025); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .photo-motion-ready .hero-photo { animation: none; }
+  .photo-motion-ready .photo-motion-target,
+  .photo-motion-ready .photo-motion-target > img { opacity: 1; transform: none; transition: none; }
+}

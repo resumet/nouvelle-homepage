@@ -13,10 +13,11 @@ import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import SEOHead from '../components/SEOHead.astro';
+import PhotoMotion from '../components/PhotoMotion.astro';
 import { localeFromUrl, localeMeta, type Locale } from '../i18n/config';
 import { getMessages } from '../i18n/messages';
 interface Props { title: string; description: string; locale?: Locale; noindex?: boolean; canonicalPath?: string; breadcrumbs?: { label: string; path: string }[]; }
 const locale = Astro.props.locale ?? localeFromUrl(Astro.url.pathname);
 const m = getMessages(locale);
 ---
-<!doctype html><html lang={localeMeta[locale].htmlLang} data-locale={locale}><head><SEOHead {...Astro.props} locale={locale} /></head><body><a class="skip-link" href="#main">{m.common.skip}</a><Header locale={locale} /><main id="main" tabindex="-1"><slot /></main><Footer locale={locale} /></body></html>
+<!doctype html><html lang={localeMeta[locale].htmlLang} data-locale={locale}><head><SEOHead {...Astro.props} locale={locale} /></head><body><a class="skip-link" href="#main">{m.common.skip}</a><Header locale={locale} /><main id="main" tabindex="-1"><slot /></main><Footer locale={locale} /><PhotoMotion /></body></html>
