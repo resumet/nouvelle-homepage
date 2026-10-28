@@ -4,9 +4,11 @@ export type Locale = 'ko' | 'zh-CN' | 'en' | 'ja';
 export type Localized<T> = { ko: T } & Partial<Record<Exclude<Locale, 'ko'>, T>>;
 export type HotelImage = { src: string; alt: string; width: number; height: number; variants?: { src: string; width: number }[] };
 
+export const siteTitle = 'Nouvelle Hotel and Spa';
+
 export const hotel = {
   name: '누베르 호텔 앤 스파 종로점',
-  englishName: 'NOUVER HOTEL & SPA JONGNO',
+  englishName: siteTitle,
   region: '서울 종로5가',
   totalRooms: 30,
   address: '서울 종로구 종로31길 46-8',
