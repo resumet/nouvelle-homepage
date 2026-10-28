@@ -7,15 +7,32 @@ export const hotel = {
   englishName: 'NOUVER HOTEL & SPA JONGNO',
   region: '서울 종로5가',
   totalRooms: 30,
-  address: '',
-  phone: '',
-  email: '',
+  address: '서울 종로구 종로31길 46-8',
+  phone: '02-747-3002',
+  emails: ['resumet@naver.com', 'narasysj@naver.com'] as string[],
   mapsUrl: '',
   speakerModel: '',
   speakerRoomScope: '',
   heroImage: null as HotelImage | null,
   soundImage: null as HotelImage | null,
   bathImages: [] as HotelImage[],
+};
+
+export const telephoneHref = `tel:${hotel.phone.replace(/[^\d]/g, '').replace(/^0/, '+82')}`;
+
+// Confirmed by the hotel operator on 2026-10-28. Walking times are approximate.
+export const directions = {
+  walking: [
+    { name: '종로5가역', minutes: 5 },
+    { name: '종묘', minutes: 6 },
+    { name: '종로3가역', minutes: 11 },
+    { name: '을지로4가역', minutes: 11 },
+  ],
+  busStop: '종로5가 광장시장',
+  busRoutes: ['101', '103', '201', '260', '370', '7212', '9301'],
+  subwayStation: '종로5가역',
+  subwayWalkMinutes: 5,
+  navigationQuery: '누베르 호텔 앤 스파 서울종로점',
 };
 
 // Only publish locales with complete, reviewed translations.

@@ -223,6 +223,21 @@
 .contact-list > div { display: grid; grid-template-columns: 80px 1fr; gap: 20px; font-size: 13px; }
 .contact-list dt { color: var(--muted); font-size: 11px; padding-top: 2px; }
 .contact-list dd a { text-decoration: underline; text-underline-offset: 4px; }
+.contact-emails { display: grid; justify-items: start; gap: 8px; }
+.walking-panel { background: var(--surface); border-radius: 8px; padding: 36px; }
+.walking-panel h2 { font-size: 26px; margin-bottom: 20px; }
+.walking-list { display: grid; grid-template-columns: 1fr 1fr; gap: 26px 35px; margin-bottom: 24px; }
+.walking-list dt { font-size: 12px; color: var(--muted); margin-bottom: 6px; }
+.walking-list dd { font-size: 12px; }
+.walking-list dd > span { font-size: 33px; letter-spacing: -.04em; margin-inline: 4px; }
+.directions-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 55px; }
+.directions-grid h3 { font-size: 22px; margin-bottom: 20px; }
+.directions-grid p { font-size: 13px; line-height: 2; color: var(--muted); }
+.directions-grid p.small { font-size: 11px; margin-top: 16px; }
+.directions-grid b { color: var(--ink); font-weight: 500; }
+.directions-grid .text-link { margin-top: 22px; }
+.bus-routes { display: flex; flex-wrap: wrap; gap: 7px; list-style: none; padding: 0; margin: 20px 0 0; }
+.bus-routes li { border: 1px solid var(--line); border-radius: 2px; padding: 3px 9px; font-size: 11px; }
 .map-buttons { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 25px; }
 .notice { border-left: 2px solid var(--gold); padding-left: 20px; color: var(--muted); font-size: 12px; margin-block: 32px; }
 .location-region { background: var(--surface); min-height: 430px; border-radius: 8px; padding: 45px; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 1px solid var(--line); text-align: center; }
@@ -380,6 +395,8 @@
   .related-room { flex-direction: column; align-items: flex-start; gap: 12px; padding-block: 30px 60px; }
   .related-room .text-link { margin-left: 0; margin-top: 10px; }
   .location-layout { grid-template-columns: 1fr; gap: 32px; }
+  .walking-panel { padding: 27px; }
+  .directions-grid { grid-template-columns: 1fr; gap: 36px; }
   .location-region { min-height: 300px; padding: 30px; }
   .location-region strong { font-size: 55px; }
   .contact-layout { padding-top: 0; }

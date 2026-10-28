@@ -6,7 +6,8 @@ import { bookingUrl, isValidBookingUrl } from '../src/data/booking.ts';
 
 const missing: string[] = [];
 if (!isValidBookingUrl(bookingUrl)) missing.push('확인된 Booking.com 호텔 URL');
-for (const [key, label] of [['address', '도로명주소'], ['phone', '대표 전화'], ['email', '공식 이메일']] as const) if (!hotel[key].trim()) missing.push(label);
+for (const [key, label] of [['address', '도로명주소'], ['phone', '대표 전화']] as const) if (!hotel[key].trim()) missing.push(label);
+if (!hotel.emails.length || hotel.emails.some(email => !email.trim())) missing.push('공식 이메일');
 const imageGroups = [
   { label: '호텔 히어로', images: hotel.heroImage ? [hotel.heroImage] : [] },
   { label: '프리미엄 스피커', images: hotel.soundImage ? [hotel.soundImage] : [] },

@@ -1,13 +1,13 @@
 ---
 import BookingButton from './BookingButton.astro';
-import { hotel } from '../data/hotel';
+import { hotel, telephoneHref } from '../data/hotel';
 import { withBase } from '../utils/paths';
 ---
 <footer class="site-footer">
   <div class="container footer-main">
     <div><a class="wordmark" href={withBase()} aria-label="NOUVER. HOTEL & SPA JONGNO · 홈으로"><span>NOUVER<span class="wordmark-period">.</span></span><span class="wordmark-caption">HOTEL &amp; SPA JONGNO</span></a><p class="footer-name">{hotel.name}</p><p class="muted">{hotel.address || hotel.region}</p>
-    {hotel.phone && <p><a href={`tel:${hotel.phone.replace(/[^+\d]/g, '')}`}>{hotel.phone}</a></p>}
-    {hotel.email && <p><a href={`mailto:${hotel.email}`}>{hotel.email}</a></p>}</div>
+    {hotel.phone && <p><a href={telephoneHref}>{hotel.phone}</a></p>}
+    {hotel.emails.map(email => <p><a href={`mailto:${email}`}>{email}</a></p>)}</div>
     <div class="footer-links"><a href={withBase('rooms/')}>객실 안내</a><a href={withBase('facilities/')}>프라이빗 욕장</a><a href={withBase('location/')}>오시는 길</a><a href={withBase('contact/')}>문의 및 안내</a></div>
     <div class="footer-reservation"><p>종로에서 만나는 나만의 휴식.</p><BookingButton /><span class="muted small">예약은 Booking.com에서 진행됩니다.</span></div>
   </div>

@@ -1,6 +1,7 @@
 import { readFile, readdir, stat } from 'node:fs/promises';
 import { resolve, join, extname } from 'node:path';
 import assert from 'node:assert/strict';
+import { bookingUrl, canBook } from '../src/data/booking.ts';
 
 const root = resolve('dist');
 const base = '/nouvelle-homepage/';
@@ -33,6 +34,12 @@ for (const file of pages) {
     assert.match(match[0], /target="_blank"/);
     assert.match(match[0], /rel="noopener noreferrer"/);
     assert.match(match[1], /https:\/\/(?:www\.)?booking\.com\/hotel\//);
+    assert.ok(canBook, `${file}: booking links must stay hidden without a valid hotel URL`);
+    assert.equal(match[1].replaceAll('&amp;', '&'), bookingUrl, `${file}: all booking links must use the configured hotel URL`);
+  }
+  if (canBook) {
+    assert.ok(html.includes(`href="${bookingUrl.replaceAll('&', '&amp;')}"`), `${file}: active booking link is missing`);
+    assert.ok(!html.includes('booking-pending'), `${file}: reservation controls must activate together`);
   }
   assert.doesNotMatch(html, /googletagmanager|google-analytics|gtag\(/i);
 }

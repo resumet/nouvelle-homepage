@@ -1,5 +1,5 @@
 // Set only the verified HTTPS Booking.com URL for this hotel.
-export const bookingUrl: string = '';
+export const bookingUrl: string = 'https://www.booking.com/hotel/kr/nouvelle-and-spa-seoul-jongro.ko.html';
 
 export function isValidBookingUrl(value: string): boolean {
   if (!value) return false;
