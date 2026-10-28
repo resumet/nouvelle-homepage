@@ -9,7 +9,7 @@ const credit = attractionCredits[attraction.slug as keyof typeof attractionCredi
 ---
 <article class="attraction-card">
   {attraction.image && <MediaFrame image={attraction.image} label={attraction.name.ko} kind="city" />}
-  {credit && <div class="photo-credit"><a href={credit.sourceUrl} target="_blank" rel="noopener noreferrer" aria-label={`${attraction.name.ko} 사진 출처: ${credit.author} · 새 탭에서 열기`}>사진: {credit.author}</a><span aria-hidden="true"> · </span><a href={credit.licenseUrl} target="_blank" rel="noopener noreferrer" aria-label={`${credit.license} 사진 이용 조건 · 새 탭에서 열기`}>{credit.license}</a></div>}
+  {credit && <div class="photo-credit"><a href={credit.sourceUrl} target="_blank" rel="noopener noreferrer" aria-label={`사진: ${credit.author} · ${attraction.name.ko} 사진 출처 · 새 탭에서 열기`}>사진: {credit.author}</a><span aria-hidden="true"> · </span><a href={credit.licenseUrl} target="_blank" rel="noopener noreferrer" aria-label={`${credit.license} 사진 이용 조건 · 새 탭에서 열기`}>{credit.license}</a></div>}
   <div class="attraction-top"><span class="attraction-purpose">{attraction.purpose}</span><span class="attraction-index" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span></div>
   <h3>{attraction.name.ko}</h3><p>{attraction.description.ko}</p><div class="attraction-bottom"><span class="muted small">{attraction.location}</span><a href={googleMap(attraction.query)} target="_blank" rel="noopener noreferrer" aria-label={`${attraction.name.ko} 지도 보기 · Google 지도 새 탭에서 열기`}>지도 보기 <span aria-hidden="true">↗</span></a></div>
 </article>
