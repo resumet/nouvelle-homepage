@@ -1,6 +1,6 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { isValidBookingUrl, bookingUrl, canBook } from '../src/data/booking.ts';
+import { isValidBookingUrl, bookingUrls, canBook } from '../src/data/booking.ts';
 
 test('accepts only HTTPS Booking.com hotel pages', () => {
   assert.equal(isValidBookingUrl('https://www.booking.com/hotel/kr/verified-hotel.ko.html'), true);
@@ -13,6 +13,8 @@ test('rejects missing, insecure, generic, and impersonated reservation links', (
   }
 });
 
-test('booking state is derived from the single configured URL', () => {
-  assert.equal(canBook, isValidBookingUrl(bookingUrl));
+test('booking state is derived from the localized hotel URLs', () => {
+  assert.equal(canBook, Object.values(bookingUrls).every(isValidBookingUrl));
+  assert.match(bookingUrls.en, /\.en-gb\.html$/);
+  assert.match(bookingUrls['zh-CN'], /\.zh-cn\.html$/);
 });

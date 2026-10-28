@@ -1,7 +1,7 @@
 import { readFile, readdir, stat } from 'node:fs/promises';
 import { resolve, join, extname } from 'node:path';
 import assert from 'node:assert/strict';
-import { bookingUrl, canBook } from '../src/data/booking.ts';
+import { bookingUrlForLocale, canBook } from '../src/data/booking.ts';
 
 const root = resolve('dist');
 const base = '/';
@@ -22,6 +22,7 @@ const urls = new Set();
 for (const page of pages) {
   const { file } = page;
   const html = await readFile(join(root, file), 'utf8');
+  const bookingUrl = bookingUrlForLocale(page.locale);
   assert.equal([...html.matchAll(/<h1(?:\s|>)/g)].length, 1, `${file}: exactly one H1`);
   const title = html.match(/<title>(.*?)<\/title>/s)?.[1];
   assert.ok(title && !titles.has(title), `${file}: unique page title`);

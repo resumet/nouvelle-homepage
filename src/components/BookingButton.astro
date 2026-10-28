@@ -1,11 +1,12 @@
 ---
-import { bookingUrl, canBook } from '../data/booking';
+import { bookingUrlForLocale, canBook } from '../data/booking';
 import { type Locale } from '../i18n/config';
 import { getMessages } from '../i18n/messages';
 interface Props { label?: string; locale?: Locale; variant?: 'gold' | 'outline'; class?: string; }
 const { locale = 'ko', variant = 'gold', class: className = '' } = Astro.props;
 const m = getMessages(locale);
 const label = Astro.props.label ?? m.common.bookNow;
+const bookingUrl = bookingUrlForLocale(locale);
 ---
 {canBook ? (
   <a class:list={['button', `button-${variant}`, className]} href={bookingUrl} target="_blank" rel="noopener noreferrer" aria-label={`${label} · ${m.common.bookingNewTab}`}>
