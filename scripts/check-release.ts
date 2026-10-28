@@ -4,6 +4,7 @@ import sharp from 'sharp';
 import { hotel } from '../src/data/hotel.ts';
 import { rooms } from '../src/data/rooms.ts';
 import { bookingUrl, isValidBookingUrl } from '../src/data/booking.ts';
+import { imageAlt, publishedLocales } from '../src/i18n/config.ts';
 
 const missing: string[] = [];
 if (!isValidBookingUrl(bookingUrl)) missing.push('확인된 Booking.com 호텔 URL');
@@ -21,7 +22,7 @@ for (const group of imageGroups) {
     const file = resolve('public', image.src);
     const publicRoot = resolve('public');
     if (!file.startsWith(publicRoot + '\\') && !file.startsWith(publicRoot + '/')) missing.push(`${group.label}: 사진 경로는 public 내부여야 합니다`);
-    else if (!existsSync(file) || !image.alt.trim() || image.width <= 0 || image.height <= 0) missing.push(`${group.label}: 사진 파일/설명/크기 확인`);
+    else if (!existsSync(file) || publishedLocales.some(locale => !imageAlt(image, locale).trim()) || image.width <= 0 || image.height <= 0) missing.push(`${group.label}: 사진 파일/다국어 설명/크기 확인`);
     else {
       try {
         const metadata = await sharp(file).metadata();

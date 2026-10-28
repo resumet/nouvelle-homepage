@@ -1,0 +1,17 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeading from '../components/PageHeading.astro';
+import RoomCard from '../components/RoomCard.astro';
+import BookingButton from '../components/BookingButton.astro';
+import { rooms } from '../data/rooms';
+import type { Locale } from '../i18n/config';
+import { getMessages } from '../i18n/messages';
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const c = getMessages(locale).rooms;
+---
+<BaseLayout locale={locale} title={c.seoTitle} description={c.seoDescription} breadcrumbs={[{ label: c.breadcrumb, path: 'rooms/' }]}>
+  <PageHeading title={c.title} subtitle="ROOMS & SUITES" description={c.description} />
+  <section class="container page-section"><div class="room-grid">{rooms.map(room => <RoomCard room={room} locale={locale} />)}</div></section>
+  <section class="section surface"><div class="container"><div class="section-heading"><h2>{c.compareTitle}</h2><p>{c.compareBody}</p></div><div class="comparison-wrap"><table class="comparison-table"><caption class="sr-only">{c.caption}</caption><thead><tr><th scope="col">{c.labels.guide}</th>{rooms.map(room => <th scope="col">{room.name}</th>)}</tr></thead><tbody><tr><th scope="row">{c.labels.bookingName}</th>{rooms.map(room => <td>{room.bookingName[locale]}</td>)}</tr><tr><th scope="row">{c.labels.area}</th>{rooms.map(room => <td>{room.area}㎡</td>)}</tr><tr><th scope="row">{c.labels.bed}</th>{rooms.map(room => <td>{room.bed[locale]}</td>)}</tr><tr><th scope="row">{c.labels.view}</th>{rooms.map(() => <td>{getMessages(locale).common.cityView}</td>)}</tr><tr><th scope="row">{c.labels.bathtub}</th>{rooms.map(room => <td>{room.feature[locale]}</td>)}</tr></tbody></table></div><p class="small muted comparison-note">{c.note}</p><BookingButton locale={locale} /></div></section>
+</BaseLayout>

@@ -1,0 +1,45 @@
+---
+import HomePage from '../../views/HomePage.astro';
+import RoomsPage from '../../views/RoomsPage.astro';
+import RoomPage from '../../views/RoomPage.astro';
+import FacilitiesPage from '../../views/FacilitiesPage.astro';
+import ExplorePage from '../../views/ExplorePage.astro';
+import LocationPage from '../../views/LocationPage.astro';
+import ContactPage from '../../views/ContactPage.astro';
+import LegalPage from '../../views/LegalPage.astro';
+import { rooms } from '../../data/rooms';
+import type { Locale } from '../../i18n/config';
+
+type PageKind = 'home' | 'rooms' | 'room' | 'facilities' | 'explore' | 'location' | 'contact' | 'privacy' | 'terms';
+export function getStaticPaths() {
+  const routes = [
+    { kind: 'home' },
+    { route: 'rooms', kind: 'rooms' },
+    ...rooms.map(room => ({ route: `rooms/${room.slug}`, kind: 'room', slug: room.slug })),
+    { route: 'facilities', kind: 'facilities' },
+    { route: 'location', kind: 'location' },
+    { route: 'explore', kind: 'explore' },
+    { route: 'contact', kind: 'contact' },
+    { route: 'privacy', kind: 'privacy' },
+    { route: 'terms', kind: 'terms' },
+  ];
+  return ([{ param: 'en', locale: 'en' }, { param: 'zh-cn', locale: 'zh-CN' }] as const).flatMap(language => routes.map(page => ({
+    params: { locale: language.param, route: page.route },
+    props: { locale: language.locale, kind: page.kind as PageKind, slug: 'slug' in page ? page.slug : undefined },
+  })));
+}
+
+interface Props { locale: Locale; kind: PageKind; slug?: string; }
+const { locale, kind, slug } = Astro.props;
+const room = slug ? rooms.find(item => item.slug === slug) : undefined;
+const other = room ? rooms.find(item => item.slug !== room.slug) : undefined;
+---
+{kind === 'home' && <HomePage locale={locale} />}
+{kind === 'rooms' && <RoomsPage locale={locale} />}
+{kind === 'room' && room && other && <RoomPage locale={locale} room={room} other={other} />}
+{kind === 'facilities' && <FacilitiesPage locale={locale} />}
+{kind === 'explore' && <ExplorePage locale={locale} />}
+{kind === 'location' && <LocationPage locale={locale} />}
+{kind === 'contact' && <ContactPage locale={locale} />}
+{kind === 'privacy' && <LegalPage locale={locale} kind="privacy" />}
+{kind === 'terms' && <LegalPage locale={locale} kind="terms" />}

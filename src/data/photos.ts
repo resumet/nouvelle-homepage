@@ -4,7 +4,11 @@ import type { HotelImage } from './hotel';
 export const photos = {
   "lobby": {
     "src": "images/hotel/lobby-1280.webp",
-    "alt": "벽돌 마감과 목재 카운터가 어우러진 누베르 호텔 로비",
+    "alt": {
+      "ko": "벽돌 마감과 목재 카운터가 어우러진 누베르 호텔 로비",
+      "en": "Nouvelle Hotel lobby with brick walls and a wood reception counter",
+      "zh-CN": "采用砖墙与木质前台设计的Nouvelle酒店大堂"
+    },
     "width": 1280,
     "height": 800,
     "variants": [
@@ -24,7 +28,11 @@ export const photos = {
   },
   "deluxeBedroom": {
     "src": "images/hotel/deluxe-bedroom-1280.webp",
-    "alt": "디럭스 더블룸의 침대와 긴 테이블 전경",
+    "alt": {
+      "ko": "디럭스 더블룸의 침대와 긴 테이블 전경",
+      "en": "Deluxe Double Room with a bed and long table",
+      "zh-CN": "配有双人床与长桌的豪华双人间"
+    },
     "width": 1280,
     "height": 800,
     "variants": [
@@ -44,7 +52,11 @@ export const photos = {
   },
   "deluxeBed": {
     "src": "images/hotel/deluxe-bed-1280.webp",
-    "alt": "디럭스 더블룸의 더블침대와 목재 선반",
+    "alt": {
+      "ko": "디럭스 더블룸의 더블침대와 목재 선반",
+      "en": "Double bed and wood shelving in the Deluxe Room",
+      "zh-CN": "豪华客房内的双人床与木质搁架"
+    },
     "width": 1280,
     "height": 800,
     "variants": [
@@ -64,7 +76,11 @@ export const photos = {
   },
   "deluxeBathtub": {
     "src": "images/hotel/deluxe-bathtub-1280.webp",
-    "alt": "디럭스 더블룸에 마련된 원형 욕조",
+    "alt": {
+      "ko": "디럭스 더블룸에 마련된 원형 욕조",
+      "en": "Private round bathtub in the Deluxe Double Room",
+      "zh-CN": "豪华双人间内的私人圆形浴缸"
+    },
     "width": 1280,
     "height": 800,
     "variants": [
@@ -84,7 +100,11 @@ export const photos = {
   },
   "deluxeSound": {
     "src": "images/hotel/deluxe-sound-1280.webp",
-    "alt": "디럭스 더블룸의 테이블과 스피커",
+    "alt": {
+      "ko": "디럭스 더블룸의 테이블과 스피커",
+      "en": "Table and premium speaker in the Deluxe Room",
+      "zh-CN": "豪华客房内的桌面与品质音响"
+    },
     "width": 1280,
     "height": 800,
     "variants": [
@@ -104,7 +124,11 @@ export const photos = {
   },
   "deluxeDetail": {
     "src": "images/hotel/deluxe-detail-1280.webp",
-    "alt": "디럭스 더블룸 침대 옆 조명과 목재 선반",
+    "alt": {
+      "ko": "디럭스 더블룸 침대 옆 조명과 목재 선반",
+      "en": "Bedside lighting and wood shelving in the Deluxe Room",
+      "zh-CN": "豪华客房床边照明与木质搁架"
+    },
     "width": 1280,
     "height": 800,
     "variants": [
@@ -124,7 +148,11 @@ export const photos = {
   },
   "roomBathBedroom": {
     "src": "images/hotel/room-bath-bedroom-1280.webp",
-    "alt": "스위트룸의 침대와 긴 테이블 전경",
+    "alt": {
+      "ko": "스위트룸의 침대와 긴 테이블 전경",
+      "en": "Suite Room with a bed and long table",
+      "zh-CN": "配有双人床与长桌的套房"
+    },
     "width": 1280,
     "height": 800,
     "variants": [
@@ -144,7 +172,11 @@ export const photos = {
   },
   "roomBathWide": {
     "src": "images/hotel/room-bath-wide-1280.webp",
-    "alt": "스위트룸의 테이블 너머로 보이는 침대와 원형 욕조",
+    "alt": {
+      "ko": "스위트룸의 테이블 너머로 보이는 침대와 원형 욕조",
+      "en": "Suite bed and round bathtub viewed across the table",
+      "zh-CN": "从长桌望向套房双人床与圆形浴缸"
+    },
     "width": 1280,
     "height": 800,
     "variants": [
@@ -164,7 +196,11 @@ export const photos = {
   },
   "roomBathTub": {
     "src": "images/hotel/room-bath-tub-1280.webp",
-    "alt": "빨간 타일로 둘러싸인 스위트룸의 원형 욕조",
+    "alt": {
+      "ko": "빨간 타일로 둘러싸인 스위트룸의 원형 욕조",
+      "en": "Round bathtub framed by red tiles in the Suite Room",
+      "zh-CN": "套房内以红色瓷砖环绕的圆形浴缸"
+    },
     "width": 1280,
     "height": 800,
     "variants": [
@@ -184,7 +220,11 @@ export const photos = {
   },
   "roomBathBed": {
     "src": "images/hotel/room-bath-bed-1280.webp",
-    "alt": "스위트룸의 더블침대와 목재 인테리어",
+    "alt": {
+      "ko": "스위트룸의 더블침대와 목재 인테리어",
+      "en": "Double bed and wood interior in the Suite Room",
+      "zh-CN": "套房内的双人床与木质内饰"
+    },
     "width": 1280,
     "height": 800,
     "variants": [
@@ -204,7 +244,11 @@ export const photos = {
   },
   "roomBathBathroom": {
     "src": "images/hotel/room-bath-bathroom-1280.webp",
-    "alt": "스위트룸의 흰색 세면대와 거울",
+    "alt": {
+      "ko": "스위트룸의 흰색 세면대와 거울",
+      "en": "White basin and mirror in the Suite Room",
+      "zh-CN": "套房内的白色洗手台与镜子"
+    },
     "width": 1280,
     "height": 800,
     "variants": [
@@ -224,7 +268,11 @@ export const photos = {
   },
   "premiumSound": {
     "src": "images/hotel/premium-sound-1280.webp",
-    "alt": "객실 테이블 위에 놓인 돔 형태의 프리미엄 스피커",
+    "alt": {
+      "ko": "객실 테이블 위에 놓인 돔 형태의 프리미엄 스피커",
+      "en": "Dome-shaped premium speaker on a guest-room table",
+      "zh-CN": "客房桌面上的圆顶形品质音响"
+    },
     "width": 1280,
     "height": 800,
     "variants": [
@@ -244,7 +292,11 @@ export const photos = {
   },
   "privateBathOverview": {
     "src": "images/hotel/private-bath-overview-1280.webp",
-    "alt": "어두운 타일과 넓은 욕탕으로 구성된 지하 프라이빗 욕장",
+    "alt": {
+      "ko": "어두운 타일과 넓은 욕탕으로 구성된 지하 프라이빗 사우나",
+      "en": "Private basement sauna with dark tiles and a spacious bath",
+      "zh-CN": "采用深色瓷砖并设有宽敞浴池的地下私人桑拿"
+    },
     "width": 1280,
     "height": 800,
     "variants": [
@@ -264,7 +316,11 @@ export const photos = {
   },
   "privateBathGuest": {
     "src": "images/hotel/private-bath-guest-1280.webp",
-    "alt": "지하 프라이빗 욕장의 탕에서 휴식을 즐기는 투숙객",
+    "alt": {
+      "ko": "지하 프라이빗 사우나의 탕에서 휴식을 즐기는 투숙객",
+      "en": "Guest relaxing in the private basement bath",
+      "zh-CN": "在地下私人浴池中放松的住客"
+    },
     "width": 1280,
     "height": 800,
     "variants": [
@@ -284,7 +340,11 @@ export const photos = {
   },
   "privateSaunaGuest": {
     "src": "images/hotel/private-sauna-guest-1280.webp",
-    "alt": "목재 사우나실에서 휴식을 취하는 투숙객",
+    "alt": {
+      "ko": "목재 사우나실에서 휴식을 취하는 투숙객",
+      "en": "Guest relaxing in the wood-lined sauna room",
+      "zh-CN": "在木质桑拿房中休息的住客"
+    },
     "width": 1280,
     "height": 800,
     "variants": [
@@ -304,7 +364,11 @@ export const photos = {
   },
   "privateBathFaucet": {
     "src": "images/hotel/private-bath-faucet-1280.webp",
-    "alt": "지하 프라이빗 욕장의 수전과 욕탕 디테일",
+    "alt": {
+      "ko": "지하 프라이빗 사우나의 수전과 욕탕 디테일",
+      "en": "Faucet and bath detail in the private sauna",
+      "zh-CN": "私人桑拿浴池的水龙头与细节"
+    },
     "width": 1280,
     "height": 800,
     "variants": [
@@ -324,7 +388,11 @@ export const photos = {
   },
   "privateBathSide": {
     "src": "images/hotel/private-bath-side-1280.webp",
-    "alt": "지하 프라이빗 욕장의 길게 이어진 욕탕",
+    "alt": {
+      "ko": "지하 프라이빗 사우나의 길게 이어진 욕탕",
+      "en": "Long bath in the private basement sauna",
+      "zh-CN": "地下私人桑拿内的长形浴池"
+    },
     "width": 1280,
     "height": 800,
     "variants": [
@@ -344,7 +412,11 @@ export const photos = {
   },
   "privateBathEntry": {
     "src": "images/hotel/private-bath-entry-1280.webp",
-    "alt": "지하 프라이빗 욕장의 욕탕과 옷걸이 공간 전경",
+    "alt": {
+      "ko": "지하 프라이빗 사우나의 욕탕과 옷걸이 공간 전경",
+      "en": "Bath and changing area in the private sauna",
+      "zh-CN": "私人桑拿的浴池与更衣区域"
+    },
     "width": 1280,
     "height": 800,
     "variants": [
@@ -364,7 +436,11 @@ export const photos = {
   },
   "privateBathChanging": {
     "src": "images/hotel/private-bath-changing-1280.webp",
-    "alt": "욕탕 옆에 마련된 프라이빗 욕장의 준비 공간",
+    "alt": {
+      "ko": "욕탕 옆에 마련된 프라이빗 사우나 준비 공간",
+      "en": "Private sauna preparation area beside the bath",
+      "zh-CN": "浴池旁的私人桑拿准备区"
+    },
     "width": 1280,
     "height": 800,
     "variants": [

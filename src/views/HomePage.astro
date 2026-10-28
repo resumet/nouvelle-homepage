@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import BookingButton from '../components/BookingButton.astro';
+import MediaFrame from '../components/MediaFrame.astro';
+import RoomCard from '../components/RoomCard.astro';
+import AttractionCard from '../components/AttractionCard.astro';
+import ResponsiveImage from '../components/ResponsiveImage.astro';
+import TextLines from '../components/TextLines.astro';
+import { hotel, copy } from '../data/hotel';
+import { rooms } from '../data/rooms';
+import { attractions } from '../data/attractions';
+import { localePath, type Locale } from '../i18n/config';
+import { getMessages } from '../i18n/messages';
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const m = getMessages(locale);
+const c = m.home;
+---
+<BaseLayout locale={locale} title={c.seoTitle} description={c.seoDescription}>
+  <section class:list={['home-hero', { 'hero-with-photo': !!hotel.heroImage }]}>
+    {hotel.heroImage && <ResponsiveImage image={hotel.heroImage} locale={locale} priority sizes="100vw" class="hero-photo" />}
+    <div class="container hero-inner"><div class="hero-copy"><p class="eyebrow">URBAN RETREAT, ELEVATED COMFORT</p><h1>{c.heroTitle1}<br />{c.heroTitle2}<span class="gold">.</span></h1><p class="hero-subtitle">{copy[locale].subtitle}</p><div class="hero-buttons"><BookingButton locale={locale} /><a class="button button-hero-outline" href={localePath(locale, 'rooms/')}>{c.exploreRooms} <span aria-hidden="true">↗</span></a></div></div></div>
+  </section>
+  <section class="intro-section container"><div class="intro-heading"><p class="eyebrow">A NEW WAY TO STAY</p><h2>{c.introTitle1}<br />{c.introTitle2}<span class="gold">.</span></h2></div><div class="intro-content"><p><TextLines text={c.intro1} /></p><p class="muted"><TextLines text={c.intro2} /></p><a class="text-link" href={localePath(locale, 'location/')}>{c.meet} <span aria-hidden="true">↗</span></a></div><div class="intro-photo"><MediaFrame image={hotel.lobbyImage} locale={locale} label="Hotel Lobby" sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1279px) calc(100vw - 80px), 1240px" /></div></section>
+  <section class="section surface"><div class="container"><div class="section-heading"><p class="eyebrow">ROOMS &amp; SUITES</p><h2>{c.roomsTitle}</h2><p>{c.roomsDescription}</p></div><div class="room-grid">{rooms.map(room => <RoomCard room={room} locale={locale} />)}</div><div class="section-action"><a class="text-link" href={localePath(locale, 'rooms/')}>{c.allRooms} <span aria-hidden="true">↗</span></a></div></div></section>
+  <section class="section container sound-section"><div class="sound-visual"><MediaFrame image={hotel.soundImage} locale={locale} label="Premium Sound" kind="sound" /></div><div class="sound-copy"><span class="section-kicker">PREMIUM SOUND</span><h2>{c.soundTitle1}<br />{c.soundTitle2}</h2><p><TextLines text={c.soundBody} /></p><p class="small muted">{c.soundNote}</p><a class="text-link" href={localePath(locale, 'rooms/')}>{c.viewRooms} <span aria-hidden="true">↗</span></a></div></section>
+  <section class="bath-section surface"><div class="container"><div class="bath-header"><p class="eyebrow">PRIVATE SAUNA</p><h2>{c.bathTitle1}<br />{c.bathTitle2}</h2><p>{c.bathBody}</p></div><MediaFrame image={hotel.bathImages[0]} locale={locale} label="Private Sauna" kind="bath" /><div class="bath-bottom"><dl class="bath-facts"><div><dt>{c.bathFacts.location}</dt><dd>{c.bathFacts.floor}</dd></div><div><dt>{c.bathFacts.hours}</dt><dd>{c.bathFacts.allDay}</dd></div><div><dt>{c.bathFacts.capacity}</dt><dd>{c.bathFacts.two}</dd></div></dl><a class="text-link" href={localePath(locale, 'facilities/')}>{c.bathDetail} <span aria-hidden="true">↗</span></a></div></div></section>
+  <section class="section container"><div class="section-heading"><p class="eyebrow">DISCOVER JONGNO</p><h2>{c.discoverTitle}</h2><p>{c.discoverBody}</p></div><div class="attraction-grid home-attractions">{attractions.slice(0, 3).map((attraction, index) => <AttractionCard attraction={attraction} index={index} locale={locale} />)}</div><div class="section-action"><a class="text-link" href={localePath(locale, 'explore/')}>{c.allAttractions} <span aria-hidden="true">↗</span></a></div></section>
+  <section class="stay-invitation"><div class="container"><span class="section-kicker">YOUR NEXT STAY</span><h2>{c.invitationTitle1}<br />{c.invitationTitle2}</h2><BookingButton locale={locale} /><p class="muted small">{c.invitationNote}</p></div></section>
+</BaseLayout>

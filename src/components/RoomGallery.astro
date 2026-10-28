@@ -3,13 +3,17 @@ import type { HotelImage } from '../data/hotel';
 import MediaFrame from './MediaFrame.astro';
 import { withBase } from '../utils/paths';
 import ResponsiveImage from './ResponsiveImage.astro';
-interface Props { images: HotelImage[]; label: string; kind?: 'room' | 'bath'; }
+import { imageAlt, localeFromUrl, type Locale } from '../i18n/config';
+import { getMessages } from '../i18n/messages';
+interface Props { images: HotelImage[]; label: string; locale?: Locale; kind?: 'room' | 'bath'; }
 const { images, label, kind = 'room' } = Astro.props;
+const locale = Astro.props.locale ?? localeFromUrl(Astro.url.pathname);
+const m = getMessages(locale);
 ---
-{images.length > 0 ? <section class="gallery" data-gallery aria-label={`${label} 사진 갤러리`}>
-  <div class="gallery-grid" style={`--gallery-columns: ${Math.min(4, Math.max(1, images.length - 1))}`} >{images.map((image, index) => <button class="gallery-thumbnail" data-index={index} data-src={withBase(image.src)} data-alt={image.alt} aria-label={`${image.alt} 확대 보기`}><ResponsiveImage image={image} priority={index === 0} sizes={index === 0 ? '(max-width: 767px) calc(100vw - 40px), (max-width: 1279px) calc(100vw - 80px), 1240px' : '(max-width: 767px) calc((100vw - 50px) / 2), (max-width: 1279px) calc((100vw - 128px) / 4), 300px'} /></button>)}</div>
-  <dialog class="gallery-dialog" aria-label={`${label} 사진 확대`}><button class="gallery-close" aria-label="사진 닫기">×</button><div class="gallery-stage"><img class="gallery-full" alt="" /><div class="gallery-controls"><button class="gallery-prev" aria-label="이전 사진">←</button><p class="gallery-caption" aria-live="polite"></p><button class="gallery-next" aria-label="다음 사진">→</button></div></div></dialog>
-</section> : <section class="gallery-empty" aria-label={`${label} 갤러리`}><MediaFrame label={label} kind={kind} /><p class="small muted">공간의 실제 모습을 담은 사진을 준비하고 있습니다.</p></section>}
+{images.length > 0 ? <section class="gallery" data-gallery aria-label={`${label} ${m.common.gallery.gallery}`}>
+  <div class="gallery-grid" style={`--gallery-columns: ${Math.min(4, Math.max(1, images.length - 1))}`} >{images.map((image, index) => { const alt = imageAlt(image, locale); return <button class="gallery-thumbnail" data-index={index} data-src={withBase(image.src)} data-alt={alt} aria-label={`${alt} ${m.common.gallery.enlarge}`}><ResponsiveImage image={image} alt={alt} locale={locale} priority={index === 0} sizes={index === 0 ? '(max-width: 767px) calc(100vw - 40px), (max-width: 1279px) calc(100vw - 80px), 1240px' : '(max-width: 767px) calc((100vw - 50px) / 2), (max-width: 1279px) calc((100vw - 128px) / 4), 300px'} /></button> })}</div>
+  <dialog class="gallery-dialog" aria-label={`${label} ${m.common.gallery.expanded}`}><button class="gallery-close" aria-label={m.common.gallery.close}>×</button><div class="gallery-stage"><img class="gallery-full" alt="" /><div class="gallery-controls"><button class="gallery-prev" aria-label={m.common.gallery.previous}>←</button><p class="gallery-caption" aria-live="polite"></p><button class="gallery-next" aria-label={m.common.gallery.next}>→</button></div></div></dialog>
+</section> : <section class="gallery-empty" aria-label={`${label} ${m.common.gallery.gallery}`}><MediaFrame label={label} kind={kind} locale={locale} /><p class="small muted">{m.common.gallery.empty}</p></section>}
 <script>
   document.querySelectorAll<HTMLElement>('[data-gallery]').forEach((gallery) => {
     const items = [...gallery.querySelectorAll<HTMLButtonElement>('[data-index]')];

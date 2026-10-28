@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeading from '../components/PageHeading.astro';
+import TextLines from '../components/TextLines.astro';
+import { hotel, hotelText, directions, directionsText } from '../data/hotel';
+import { googleMap, naverMap } from '../data/attractions';
+import { localePath, type Locale } from '../i18n/config';
+import { getMessages } from '../i18n/messages';
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const m = getMessages(locale);
+const c = m.location;
+const hotelCopy = hotelText[locale];
+const directionCopy = directionsText[locale];
+const format = (text: string, values: Record<string, string | number>) => Object.entries(values).reduce((result, [key, value]) => result.replace(`{${key}}`, String(value)), text);
+---
+<BaseLayout locale={locale} title={c.seoTitle} description={c.seoDescription} breadcrumbs={[{ label: c.breadcrumb, path: 'location/' }]}>
+  <PageHeading title={c.title} subtitle="FIND US IN JONGNO" description={c.description} />
+  <section class="container page-section location-layout">
+    <div class="location-panel"><span class="section-kicker">NOUVELLE JONGNO</span><h2>{c.city}</h2><dl class="contact-list"><div><dt>{c.labels.hotel}</dt><dd>{hotelCopy.name}</dd></div><div><dt>{c.labels.address}</dt><dd>{hotelCopy.address}</dd></div><div><dt>{c.labels.nearest}</dt><dd>{locale === 'en' ? `${format(c.fromStation, { minutes: directions.subwayWalkMinutes })}${directionCopy.subwayStation}` : `${directionCopy.subwayStation}${format(c.fromStation, { minutes: directions.subwayWalkMinutes })}`}</dd></div></dl><div class="map-buttons"><a class="button button-gold" href={hotel.mapsUrl || googleMap(hotel.address)} target="_blank" rel="noopener noreferrer" aria-label={c.googleAria}>{c.googleMap} <span aria-hidden="true">↗</span></a><a class="button button-outline" href={naverMap(hotel.address)} target="_blank" rel="noopener noreferrer" aria-label={c.naverAria}>{c.naverMap} <span aria-hidden="true">↗</span></a></div><a class="text-link" href={localePath(locale, 'contact/')}>{m.common.contact} <span aria-hidden="true">↗</span></a></div>
+    <div class="walking-panel"><h2>{c.walkingTitle}</h2><dl class="walking-list">{directionCopy.walking.map(place => <div><dt>{place.name}</dt><dd>{c.approx} <span>{place.minutes}</span>{c.minutes}</dd></div>)}</dl><p class="small muted">{c.walkingNote}</p></div>
+  </section>
+  <section class="section surface"><div class="container"><div class="section-heading"><h2>{c.directionsTitle}</h2></div><div class="directions-grid">
+    <article><h3>{c.subway}</h3><p><TextLines text={format(c.subwayBody, { station: directionCopy.subwayStation, minutes: directions.subwayWalkMinutes })} /></p><a class="text-link" href={naverMap(hotel.address)} target="_blank" rel="noopener noreferrer">{c.route} <span aria-hidden="true">↗</span></a></article>
+    <article><h3>{c.bus}</h3><p><TextLines text={format(c.busBody, { stop: directionCopy.busStop })} /></p><ul class="bus-routes" aria-label={c.busAria}>{directions.busRoutes.map(route => <li>{route}</li>)}</ul></article>
+    <article><h3>{c.car}</h3><p><TextLines text={format(c.carBody, { query: directionCopy.navigationQuery })} /></p><p class="small muted">{c.carNote}</p></article>
+  </div></div></section>
+</BaseLayout>

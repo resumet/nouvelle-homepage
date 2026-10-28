@@ -1,0 +1,17 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeading from '../components/PageHeading.astro';
+import RoomGallery from '../components/RoomGallery.astro';
+import { hotel } from '../data/hotel';
+import { localePath, type Locale } from '../i18n/config';
+import { getMessages } from '../i18n/messages';
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const m = getMessages(locale);
+const c = m.facilities;
+---
+<BaseLayout locale={locale} title={c.seoTitle} description={c.seoDescription} breadcrumbs={[{ label: c.breadcrumb, path: 'facilities/' }]}>
+  <PageHeading title={c.title} subtitle="PRIVATE SAUNA" description={c.description} />
+  <div class="container"><RoomGallery images={hotel.bathImages} label="Private Sauna" locale={locale} kind="bath" /></div>
+  <section class="container page-section facility-details"><div><h2>{c.detailsTitle}</h2><p class="muted">{c.detailsBody}</p><dl class="spec-list"><div><dt>{c.labels.location}</dt><dd>{c.values.floor}</dd></div><div><dt>{c.labels.hours}</dt><dd>{c.values.allDay}</dd></div><div><dt>{c.labels.capacity}</dt><dd>{c.values.two}</dd></div><div><dt>{c.labels.type}</dt><dd>{c.values.type}</dd></div></dl></div><div class="policy-panel"><h3>{c.policyTitle}</h3><p>{c.policy1}</p><p>{c.policy2}</p><p>{c.policy3}</p><a class="text-link" href={localePath(locale, 'contact/')}>{m.common.contact} <span aria-hidden="true">↗</span></a></div></section>
+</BaseLayout>

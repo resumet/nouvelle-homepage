@@ -1,11 +1,12 @@
 ---
 import type { HotelImage } from '../data/hotel';
 import ResponsiveImage from './ResponsiveImage.astro';
-interface Props { image?: HotelImage | null; label: string; kind?: 'room' | 'bath' | 'sound' | 'city' | 'hero'; priority?: boolean; class?: string; sizes?: string; }
-const { image, label, kind = 'room', priority = false, class: className = '', sizes } = Astro.props;
+import type { Locale } from '../i18n/config';
+interface Props { image?: HotelImage | null; label: string; alt?: string; locale?: Locale; kind?: 'room' | 'bath' | 'sound' | 'city' | 'hero'; priority?: boolean; class?: string; sizes?: string; }
+const { image, label, alt, locale, kind = 'room', priority = false, class: className = '', sizes } = Astro.props;
 ---
 <div class:list={['media-frame', `media-${kind}`, className, { 'has-image': !!image }]}>
-  {image ? <ResponsiveImage image={image} priority={priority} sizes={sizes ?? (kind === 'bath' ? '(max-width: 767px) calc(100vw - 40px), (max-width: 1279px) calc(100vw - 80px), 1240px' : undefined)} /> : <>
+  {image ? <ResponsiveImage image={image} alt={alt} locale={locale} priority={priority} sizes={sizes ?? (kind === 'bath' ? '(max-width: 767px) calc(100vw - 40px), (max-width: 1279px) calc(100vw - 80px), 1240px' : undefined)} /> : <>
     <div class="media-linework" aria-hidden="true"><i></i><i></i><i></i></div>
     <div class="media-placeholder"><span class="media-placeholder-name">{label}</span><span>실사진 준비 중</span></div>
   </>}

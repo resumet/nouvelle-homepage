@@ -1,18 +1,25 @@
 ---
-import { hotel, siteTitle } from '../data/hotel';
+import { hotel, hotelText, siteTitle } from '../data/hotel';
 import { withBase } from '../utils/paths';
-interface Props { title: string; description: string; noindex?: boolean; canonicalPath?: string; breadcrumbs?: { label: string; path: string }[]; }
-const { title, description, noindex = false, canonicalPath, breadcrumbs = [] } = Astro.props;
+import { contentPath, imageAlt, localeMeta, localePath, publishedLocales, type Locale } from '../i18n/config';
+import { getMessages } from '../i18n/messages';
+interface Props { title: string; description: string; locale: Locale; noindex?: boolean; canonicalPath?: string; breadcrumbs?: { label: string; path: string }[]; }
+const { title, description, locale, noindex = false, canonicalPath, breadcrumbs = [] } = Astro.props;
+const m = getMessages(locale);
+const hotelCopy = hotelText[locale];
 const site = Astro.site!;
 const canonical = new URL(canonicalPath ?? Astro.url.pathname, site).href;
 const root = new URL(withBase(), site).href;
 const documentTitle = canonical === root ? siteTitle : `${title} | ${siteTitle}`;
-const graph: Record<string, unknown>[] = [{ '@type': 'Hotel', '@id': `${root}#hotel`, name: hotel.name, alternateName: hotel.englishName, url: root, ...(hotel.heroImage ? { image: new URL(withBase(hotel.heroImage.src), site).href } : {}), ...(hotel.address ? { address: { '@type': 'PostalAddress', streetAddress: hotel.address, addressCountry: 'KR' } } : {}), ...(hotel.phone ? { telephone: hotel.phone } : {}), ...(hotel.emails.length ? { email: hotel.emails } : {}), numberOfRooms: hotel.totalRooms }];
-if (breadcrumbs.length) graph.push({ '@type': 'BreadcrumbList', itemListElement: [{ label: '홈', path: '' }, ...breadcrumbs].map((item, index) => ({ '@type': 'ListItem', position: index + 1, name: item.label, item: new URL(withBase(item.path), site).href })) });
+const routePath = contentPath(Astro.url.pathname);
+const graph: Record<string, unknown>[] = [{ '@type': 'Hotel', '@id': `${root}#hotel`, name: hotelCopy.name, alternateName: hotel.englishName, url: new URL(localePath(locale), site).href, inLanguage: localeMeta[locale].htmlLang, ...(hotel.heroImage ? { image: new URL(withBase(hotel.heroImage.src), site).href } : {}), address: { '@type': 'PostalAddress', streetAddress: hotelCopy.address, addressCountry: 'KR' }, telephone: hotel.phone, email: hotel.emails, numberOfRooms: hotel.totalRooms }];
+if (breadcrumbs.length) graph.push({ '@type': 'BreadcrumbList', itemListElement: [{ label: m.common.nav.home, path: '' }, ...breadcrumbs].map((item, index) => ({ '@type': 'ListItem', position: index + 1, name: item.label, item: new URL(localePath(locale, item.path), site).href })) });
 ---
 <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>{documentTitle}</title><meta name="description" content={description} /><link rel="canonical" href={canonical} />
+{!noindex && publishedLocales.map(item => <link rel="alternate" hreflang={localeMeta[item].htmlLang} href={new URL(localePath(item, routePath), site).href} />)}
+{!noindex && <link rel="alternate" hreflang="x-default" href={new URL(localePath('ko', routePath), site).href} />}
 {noindex && <meta name="robots" content="noindex, follow" />}
-<meta name="theme-color" content="#333333" /><meta property="og:type" content="website" /><meta property="og:locale" content="ko_KR" /><meta property="og:site_name" content={siteTitle} /><meta property="og:title" content={documentTitle} /><meta property="og:description" content={description} /><meta property="og:url" content={canonical} /><meta property="og:image" content={new URL(withBase('images/og.png'), site).href} /><meta property="og:image:width" content="1200" /><meta property="og:image:height" content="630" /><meta property="og:image:alt" content="Nouvelle Hotel and Spa 객실과 호텔 워드마크" /><meta name="twitter:card" content="summary_large_image" /><meta name="twitter:title" content={documentTitle} /><meta name="twitter:description" content={description} /><meta name="twitter:image" content={new URL(withBase('images/og.png'), site).href} />
+<meta name="theme-color" content="#333333" /><meta property="og:type" content="website" /><meta property="og:locale" content={localeMeta[locale].ogLocale} />{publishedLocales.filter(item => item !== locale).map(item => <meta property="og:locale:alternate" content={localeMeta[item].ogLocale} />)}<meta property="og:site_name" content={siteTitle} /><meta property="og:title" content={documentTitle} /><meta property="og:description" content={description} /><meta property="og:url" content={canonical} /><meta property="og:image" content={new URL(withBase('images/og.png'), site).href} /><meta property="og:image:width" content="1200" /><meta property="og:image:height" content="630" /><meta property="og:image:alt" content={imageAlt(hotel.heroImage, locale)} /><meta name="twitter:card" content="summary_large_image" /><meta name="twitter:title" content={documentTitle} /><meta name="twitter:description" content={description} /><meta name="twitter:image" content={new URL(withBase('images/og.png'), site).href} />
 <link rel="icon" type="image/svg+xml" href={withBase('favicon.svg')} /><link rel="manifest" href={withBase('site.webmanifest')} />
 {!noindex && <script type="application/ld+json" set:html={JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }).replace(/</g, '\\u003c')} />}

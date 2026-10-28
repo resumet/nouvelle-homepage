@@ -1,8 +1,11 @@
 ---
 import type { HotelImage } from '../data/hotel';
 import { withBase } from '../utils/paths';
-interface Props { image: HotelImage; sizes?: string; priority?: boolean; class?: string; }
+import { imageAlt, localeFromUrl, type Locale } from '../i18n/config';
+interface Props { image: HotelImage; alt?: string; locale?: Locale; sizes?: string; priority?: boolean; class?: string; }
 const { image, sizes = '(max-width: 767px) calc(100vw - 40px), (max-width: 1023px) calc((100vw - 80px) / 2), 600px', priority = false, class: className } = Astro.props;
+const locale = Astro.props.locale ?? localeFromUrl(Astro.url.pathname);
+const alt = Astro.props.alt ?? imageAlt(image, locale);
 const srcset = image.variants?.map(variant => `${withBase(variant.src)} ${variant.width}w`).join(', ');
 ---
-<img src={withBase(image.src)} srcset={srcset} sizes={srcset ? sizes : undefined} alt={image.alt} width={image.width} height={image.height} loading={priority ? 'eager' : 'lazy'} fetchpriority={priority ? 'high' : 'auto'} decoding="async" class={className} />
+<img src={withBase(image.src)} srcset={srcset} sizes={srcset ? sizes : undefined} alt={alt} width={image.width} height={image.height} loading={priority ? 'eager' : 'lazy'} fetchpriority={priority ? 'high' : 'auto'} decoding="async" class={className} />

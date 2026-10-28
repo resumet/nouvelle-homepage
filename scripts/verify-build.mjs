@@ -7,21 +7,38 @@ const root = resolve('dist');
 const base = '/';
 const site = 'https://nouvellehotelandspa.com';
 const paths = ['', 'rooms/', 'rooms/deluxe/', 'rooms/premium-suite/', 'facilities/', 'location/', 'explore/', 'contact/', 'privacy/', 'terms/'];
-const pages = [...paths.map(path => `${path}index.html`), '404.html'];
+const localeConfigs = [
+  { locale: 'ko', prefix: '', lang: 'ko' },
+  { locale: 'en', prefix: 'en/', lang: 'en' },
+  { locale: 'zh-CN', prefix: 'zh-cn/', lang: 'zh-CN' },
+];
+const pages = [
+  ...localeConfigs.flatMap(config => paths.map(path => ({ file: `${config.prefix}${path}index.html`, path: `${config.prefix}${path}`, ...config }))),
+  { file: '404.html', path: '404.html', locale: 'ko', prefix: '', lang: 'ko', is404: true },
+];
 const titles = new Set();
 let links = 0;
 const urls = new Set();
-for (const file of pages) {
+for (const page of pages) {
+  const { file } = page;
   const html = await readFile(join(root, file), 'utf8');
   assert.equal([...html.matchAll(/<h1(?:\s|>)/g)].length, 1, `${file}: exactly one H1`);
   const title = html.match(/<title>(.*?)<\/title>/s)?.[1];
   assert.ok(title && !titles.has(title), `${file}: unique page title`);
   titles.add(title);
-  assert.match(html, /<html lang="ko"/, `${file}: document language`);
+  assert.ok(html.includes(`<html lang="${page.lang}"`), `${file}: document language`);
   assert.match(html, /name="description" content="[^"]+"/, `${file}: description`);
-  const expected = file === '404.html' ? `${site}${base}404.html` : `${site}${base}${file.replace(/index\.html$/, '')}`;
+  const expected = `${site}${base}${page.path}`;
   assert.ok(html.includes(`rel="canonical" href="${expected}"`), `${file}: correct canonical`);
-  if (file === '404.html') assert.match(html, /noindex, follow/);
+  if (page.is404) assert.match(html, /noindex, follow/);
+  else {
+    const contentPath = page.path.replace(/^(?:en|zh-cn)\//, '');
+    for (const config of localeConfigs) {
+      const alternate = `${site}${base}${config.prefix}${contentPath}`;
+      assert.ok(html.includes(`hreflang="${config.lang}" href="${alternate}"`), `${file}: ${config.lang} alternate`);
+    }
+    assert.ok(html.includes(`hreflang="x-default" href="${site}${base}${contentPath}"`), `${file}: x-default alternate`);
+  }
   for (const match of html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) JSON.parse(match[1]);
   for (const match of html.matchAll(/(?:href|src)="([^"]+)"/g)) {
     const url = match[1].replaceAll('&amp;', '&');
@@ -73,7 +90,8 @@ async function checkCss(folder) {
 }
 await checkCss(root);
 const sitemap = await readFile(join(root, 'sitemap.xml'), 'utf8');
-for (const path of paths) assert.ok(sitemap.includes(`<loc>${site}${base}${path}</loc>`), `Sitemap missing ${path}`);
+for (const config of localeConfigs) for (const path of paths) assert.ok(sitemap.includes(`<loc>${site}${base}${config.prefix}${path}</loc>`), `Sitemap missing ${config.prefix}${path}`);
 assert.ok(!sitemap.includes('404'));
+assert.match(sitemap, /xmlns:xhtml="http:\/\/www\.w3\.org\/1999\/xhtml"/);
 assert.match(await readFile(join(root, 'robots.txt'), 'utf8'), /Sitemap: https:\/\/nouvellehotelandspa.com\/sitemap.xml/);
-console.log(`Verified ${pages.length} pages, ${links} internal references, canonical URLs, sitemap, structured data, CSS/font assets, and booking link attributes.`);
+console.log(`Verified ${pages.length} pages across 3 languages, ${links} internal references, canonical and hreflang URLs, sitemap, structured data, CSS/font assets, and booking link attributes.`);

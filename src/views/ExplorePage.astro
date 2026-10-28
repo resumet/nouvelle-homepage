@@ -1,0 +1,15 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeading from '../components/PageHeading.astro';
+import AttractionCard from '../components/AttractionCard.astro';
+import { attractions } from '../data/attractions';
+import type { Locale } from '../i18n/config';
+import { getMessages } from '../i18n/messages';
+interface Props { locale: Locale; }
+const { locale } = Astro.props;
+const c = getMessages(locale).explore;
+---
+<BaseLayout locale={locale} title={c.seoTitle} description={c.seoDescription} breadcrumbs={[{ label: c.breadcrumb, path: 'explore/' }]}>
+  <PageHeading title={c.title} subtitle="DISCOVER JONGNO" description={c.description} />
+  <section class="container page-section" aria-labelledby="nearby-attractions"><h2 id="nearby-attractions" class="sr-only">{c.attractions}</h2><div class="attraction-grid">{attractions.map((attraction, index) => <AttractionCard attraction={attraction} index={index} locale={locale} />)}</div><p class="travel-note muted small">{c.note}</p></section>
+</BaseLayout>

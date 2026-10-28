@@ -1,13 +1,15 @@
 ---
 import type { Room } from '../data/rooms';
 import MediaFrame from './MediaFrame.astro';
-import { withBase } from '../utils/paths';
-interface Props { room: Room; }
-const { room } = Astro.props;
+import { localePath, type Locale } from '../i18n/config';
+import { getMessages } from '../i18n/messages';
+interface Props { room: Room; locale?: Locale; }
+const { room, locale = 'ko' } = Astro.props;
+const m = getMessages(locale);
 ---
 <article class="room-card">
-  <a class="room-image-link" href={withBase(`rooms/${room.slug}/`)}><MediaFrame image={room.images[0]} label={room.name} /><span class="sr-only"> · {room.name} 상세 보기</span></a>
-  <div class="room-card-content"><div class="room-card-title"><h3><a href={withBase(`rooms/${room.slug}/`)}>{room.name}</a></h3><span>{room.area}<small>㎡</small></span></div>
-  <p class="room-tagline">{room.copy.ko.title}</p>
-  <div class="room-card-bottom"><span class="muted">시티뷰 <span class="separator">/</span> {room.count}실 <span class="separator">/</span> {room.feature}</span><a class="circle-link" href={withBase(`rooms/${room.slug}/`)} aria-label={`${room.name} 자세히 보기`}>↗</a></div></div>
+  <a class="room-image-link" href={localePath(locale, `rooms/${room.slug}/`)}><MediaFrame image={room.images[0]} label={room.name} locale={locale} /><span class="sr-only"> · {room.name} {m.common.detail}</span></a>
+  <div class="room-card-content"><div class="room-card-title"><h3><a href={localePath(locale, `rooms/${room.slug}/`)}>{room.name}</a></h3><span>{room.area}<small>㎡</small></span></div>
+  <p class="room-tagline">{room.copy[locale].title}</p>
+  <div class="room-card-bottom"><span class="muted">{m.common.cityView} <span class="separator">/</span> {room.count}{m.common.roomsUnit} <span class="separator">/</span> {room.feature[locale]}</span><a class="circle-link" href={localePath(locale, `rooms/${room.slug}/`)} aria-label={`${room.name} ${m.common.detail}`}>↗</a></div></div>
 </article>

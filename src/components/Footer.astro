@@ -1,16 +1,21 @@
 ---
 import BookingButton from './BookingButton.astro';
-import { hotel, telephoneHref } from '../data/hotel';
-import { withBase } from '../utils/paths';
+import { hotel, hotelText, telephoneHref } from '../data/hotel';
+import { localePath, type Locale } from '../i18n/config';
+import { getMessages } from '../i18n/messages';
+interface Props { locale?: Locale; }
+const { locale = 'ko' } = Astro.props;
+const m = getMessages(locale);
+const hotelCopy = hotelText[locale];
 ---
 <footer class="site-footer">
   <div class="container footer-main">
-    <div><a class="wordmark" href={withBase()} aria-label="NOUVER. HOTEL & SPA JONGNO · 홈으로"><span>NOUVER<span class="wordmark-period">.</span></span><span class="wordmark-caption">HOTEL &amp; SPA JONGNO</span></a><p class="footer-name">{hotel.name}</p><p class="muted">{hotel.address || hotel.region}</p>
+    <div><a class="wordmark" href={localePath(locale)} aria-label={m.common.homeAria}><span>Nouvelle<span class="wordmark-period">.</span></span><span class="wordmark-caption">HOTEL &amp; SPA JONGNO</span></a><p class="footer-name">{hotelCopy.name}</p><p class="muted">{hotelCopy.address || hotelCopy.region}</p>
     {hotel.phone && <p><a href={telephoneHref}>{hotel.phone}</a></p>}
     {hotel.emails.map(email => <p><a href={`mailto:${email}`}>{email}</a></p>)}</div>
-    <div class="footer-links"><a href={withBase('rooms/')}>객실 안내</a><a href={withBase('facilities/')}>프라이빗 욕장</a><a href={withBase('location/')}>오시는 길</a><a href={withBase('contact/')}>문의 및 안내</a></div>
-    <div class="footer-reservation"><p>종로에서 만나는 나만의 휴식.</p><BookingButton /><span class="muted small">예약은 Booking.com에서 진행됩니다.</span></div>
+    <div class="footer-links"><a href={localePath(locale, 'rooms/')}>{m.common.footerLinks.rooms}</a><a href={localePath(locale, 'facilities/')}>{m.common.footerLinks.bath}</a><a href={localePath(locale, 'location/')}>{m.common.footerLinks.location}</a><a href={localePath(locale, 'contact/')}>{m.common.footerLinks.contact}</a></div>
+    <div class="footer-reservation"><p>{m.common.footerTagline}</p><BookingButton locale={locale} /><span class="muted small">{m.common.bookingExternal}</span></div>
   </div>
-  <div class="container footer-bottom"><p>© {new Date().getFullYear()} NOUVER HOTEL &amp; SPA JONGNO</p><div><a href={withBase('privacy/')}>개인정보처리방침</a><a href={withBase('terms/')}>이용약관</a></div></div>
+  <div class="container footer-bottom"><p>© {new Date().getFullYear()} NOUVELLE HOTEL &amp; SPA JONGNO</p><div><a href={localePath(locale, 'privacy/')}>{m.common.privacy}</a><a href={localePath(locale, 'terms/')}>{m.common.terms}</a></div></div>
 </footer>
-<aside class="mobile-booking" aria-label="빠른 예약"><span>NOUVER <small>HOTEL &amp; SPA</small></span><BookingButton /></aside>
+<aside class="mobile-booking" aria-label={m.common.quickBooking}><span>NOUVELLE <small>HOTEL &amp; SPA</small></span><BookingButton locale={locale} /></aside>
