@@ -3,15 +3,13 @@ import type { Attraction } from '../data/attractions';
 import { googleMap } from '../data/attractions';
 import MediaFrame from './MediaFrame.astro';
 import { attractionCredits } from '../data/attraction-photos';
-interface Props { attraction: Attraction; compact?: boolean; }
-const { attraction, compact = false } = Astro.props;
+interface Props { attraction: Attraction; index: number; }
+const { attraction, index } = Astro.props;
 const credit = attractionCredits[attraction.slug as keyof typeof attractionCredits];
 ---
-<article class:list={['attraction-card', { 'attraction-compact': compact }]} id={attraction.slug}>
-  {attraction.image && <MediaFrame image={attraction.image} label={attraction.name.ko} kind="city" sizes={compact ? '(max-width: 767px) 112px, 160px' : '(max-width: 767px) calc(100vw - 40px), 680px'} />}
-  <div class="attraction-content">
-    <h3>{attraction.name.ko}</h3><p class="attraction-purpose">{attraction.purpose}</p><p class="attraction-description">{attraction.description.ko}</p>
-    <div class="attraction-bottom"><span class="muted small">{attraction.location}</span><a href={googleMap(attraction.query)} target="_blank" rel="noopener noreferrer" aria-label={`${attraction.name.ko} 지도 보기 · Google 지도 새 탭에서 열기`}>지도 보기 <span aria-hidden="true">↗</span></a></div>
-    {credit && <details class="photo-credit"><summary>사진 출처</summary><div><a href={credit.sourceUrl} target="_blank" rel="noopener noreferrer" aria-label={`사진: ${credit.author} · ${attraction.name.ko} 사진 출처 · 새 탭에서 열기`}>사진: {credit.author}</a><a href={credit.licenseUrl} target="_blank" rel="noopener noreferrer" aria-label={`${credit.license} 사진 이용 조건 · 새 탭에서 열기`}>{credit.license}</a></div></details>}
-  </div>
+<article class="attraction-card">
+  {attraction.image && <MediaFrame image={attraction.image} label={attraction.name.ko} kind="city" />}
+  {credit && <div class="photo-credit"><a href={credit.sourceUrl} target="_blank" rel="noopener noreferrer" aria-label={`사진: ${credit.author} · ${attraction.name.ko} 사진 출처 · 새 탭에서 열기`}>사진: {credit.author}</a><span aria-hidden="true"> · </span><a href={credit.licenseUrl} target="_blank" rel="noopener noreferrer" aria-label={`${credit.license} 사진 이용 조건 · 새 탭에서 열기`}>{credit.license}</a></div>}
+  <div class="attraction-top"><span class="attraction-purpose">{attraction.purpose}</span><span class="attraction-index" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span></div>
+  <h3>{attraction.name.ko}</h3><p>{attraction.description.ko}</p><div class="attraction-bottom"><span class="muted small">{attraction.location}</span><a href={googleMap(attraction.query)} target="_blank" rel="noopener noreferrer" aria-label={`${attraction.name.ko} 지도 보기 · Google 지도 새 탭에서 열기`}>지도 보기 <span aria-hidden="true">↗</span></a></div>
 </article>
