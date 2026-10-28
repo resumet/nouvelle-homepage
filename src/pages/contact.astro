@@ -1,0 +1,13 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeading from '../components/PageHeading.astro';
+import BookingButton from '../components/BookingButton.astro';
+import { hotel, telephoneHref } from '../data/hotel';
+import { withBase } from '../utils/paths';
+import { rooms } from '../data/rooms';
+---
+<BaseLayout title="문의 및 안내" description="누베르 호텔 앤 스파 종로점의 연락처, 객실 예약 및 프라이빗 욕장 이용 안내를 확인하세요." breadcrumbs={[{ label: '문의 및 안내', path: 'contact/' }]}>
+  <PageHeading title="편안한 여행의 시작을 함께합니다." subtitle="CONTACT & INFORMATION" description="머무는 시간에 대해 궁금한 내용을 확인해 보세요." />
+  <section class="container page-section contact-layout"><div><h2>{hotel.name}</h2><dl class="contact-list"><div><dt>위치</dt><dd>{hotel.address || hotel.region}</dd></div><div><dt>대표 전화</dt><dd>{hotel.phone ? <a href={telephoneHref}>{hotel.phone}</a> : '공식 연락처 안내 준비 중'}</dd></div><div><dt>이메일</dt><dd class="contact-emails">{hotel.emails.length ? hotel.emails.map(email => <a href={`mailto:${email}`}>{email}</a>) : '공식 이메일 안내 준비 중'}</dd></div></dl><a class="text-link" href={withBase('location/')}>오시는 길 <span aria-hidden="true">↗</span></a></div><div class="policy-panel"><h3>예약 안내</h3><p>객실 예약은 Booking.com에서 진행합니다. 홈페이지에서는 예약 및 결제 정보를 수집하지 않습니다.</p><BookingButton /></div></section>
+  <section class="section surface"><div class="container faq"><h2>이용 안내</h2><details><summary>객실은 어떻게 구성되어 있나요?</summary><p>{rooms.map(room => `${room.area}㎡ ${room.bookingName}`).join('과 ')}을 안내합니다. 두 객실 모두 시티뷰이며 더블침대 1개와 객실 내 원형 욕조를 갖추고 있습니다. 예약 시 객실별 투숙 정원과 이용 조건을 확인해 주세요.</p></details><details><summary>프라이빗 욕장은 어디에 있나요?</summary><p>지하층의 별도 시설이며, 24시간 운영하고 최대 2인이 이용할 수 있습니다. 요금과 사전 예약 방식은 확정 후 안내합니다. 모든 객실에 있는 원형 욕조와는 구분됩니다.</p></details><details><summary>스파 트리트먼트를 받을 수 있나요?</summary><p>마사지와 스파 트리트먼트는 제공하지 않습니다. 호텔 내 레스토랑, 카페, 피트니스도 운영하지 않습니다.</p></details><details><summary>체크인, 주차 및 아동 정책은 어디서 확인하나요?</summary><p>예약할 날짜와 객실의 상세 조건을 Booking.com에서 확인해 주세요. 호텔의 추가 운영 안내는 확인 후 이 페이지에 반영합니다.</p></details></div></section>
+</BaseLayout>

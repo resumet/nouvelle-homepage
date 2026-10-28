@@ -1,0 +1,162 @@
+{
+  "source": "Operator-provided photographs in the local photo folders",
+  "processing": "Auto-orientation, downsampling and WebP encoding; no generated imagery or enlargement",
+  "images": [
+    {
+      "key": "lobby",
+      "source": "roby-photos/6870a2eb4e2b28.30290677.jpeg",
+      "sha256": "d417e52816b07bd37f17b5db3e3cbbbcf21d692d31363f66be296dd426602b5d",
+      "fullSizeWebp": "images/hotel/lobby-1280.webp",
+      "originalBytes": 122771,
+      "fullSizeBytes": 86580
+    },
+    {
+      "key": "deluxeBedroom",
+      "source": "room-photos/6870a4fd17d7d4.50713697.jpeg",
+      "roomType": "deluxe",
+      "bookingPhotoId": "707148347",
+      "sha256": "a1db57b344fcbb7e47f5ae02be6da580e722a57810b9d664846ef596d90d744d",
+      "fullSizeWebp": "images/hotel/deluxe-bedroom-1280.webp",
+      "originalBytes": 114490,
+      "fullSizeBytes": 81694
+    },
+    {
+      "key": "deluxeBed",
+      "source": "user-photos/6870a4fd1c7db3.91473755.jpeg",
+      "roomType": "deluxe",
+      "bookingPhotoId": "707148344",
+      "sha256": "7d6bcc42d8dea76a782756908c2ddd2200b622cfde3dcb238db051b3555276f4",
+      "fullSizeWebp": "images/hotel/deluxe-bed-1280.webp",
+      "originalBytes": 105134,
+      "fullSizeBytes": 68744
+    },
+    {
+      "key": "deluxeBathtub",
+      "source": "room-photos/6870a4fd25e5d0.04095725.jpeg",
+      "roomType": "deluxe",
+      "bookingPhotoId": "707148348",
+      "sha256": "28e42ee433d9bd09eaf5e30cc9426b536421155f93af69b42488118afb5dad1e",
+      "fullSizeWebp": "images/hotel/deluxe-bathtub-1280.webp",
+      "originalBytes": 112424,
+      "fullSizeBytes": 75734
+    },
+    {
+      "key": "deluxeSound",
+      "source": "user-photos/6870a4fd1edcb2.52811204.jpeg",
+      "roomType": "deluxe",
+      "bookingPhotoId": "707148353",
+      "sha256": "228a9b8ca6acba39f23aff8c2f48f794ec06f720366a178fccc9e52edc719313",
+      "fullSizeWebp": "images/hotel/deluxe-sound-1280.webp",
+      "originalBytes": 120719,
+      "fullSizeBytes": 90084
+    },
+    {
+      "key": "deluxeDetail",
+      "source": "room-photos/6870a4fd211625.44412662.jpeg",
+      "roomType": "deluxe",
+      "bookingPhotoId": "707148333",
+      "sha256": "636868d399c0261b51e75fed1e388f52ff15e0806ddecde3a0d417005dc82e08",
+      "fullSizeWebp": "images/hotel/deluxe-detail-1280.webp",
+      "originalBytes": 71846,
+      "fullSizeBytes": 40642
+    },
+    {
+      "key": "roomBathBedroom",
+      "source": "room-photos/6870a542cea814.60754986.jpeg",
+      "roomType": "premium-suite",
+      "bookingPhotoId": "707148415",
+      "sha256": "d2a7e8455c91d0157f9d0d82a728b89edea6f081bd1ca89363c0496cc8255e50",
+      "fullSizeWebp": "images/hotel/room-bath-bedroom-1280.webp",
+      "originalBytes": 99982,
+      "fullSizeBytes": 68860
+    },
+    {
+      "key": "roomBathWide",
+      "source": "room-photos/6870a542dc5418.12535440.jpeg",
+      "roomType": "premium-suite",
+      "bookingPhotoId": "707148416",
+      "sha256": "9b50bf3c3f0e089500139e38618a1a6a0b394fa99dbdaaf0d0706058c0e5e3bb",
+      "fullSizeWebp": "images/hotel/room-bath-wide-1280.webp",
+      "originalBytes": 108478,
+      "fullSizeBytes": 69912
+    },
+    {
+      "key": "roomBathTub",
+      "source": "room-photos/6870a542de8766.72841390.jpeg",
+      "roomType": "premium-suite",
+      "bookingPhotoId": "707148414",
+      "sha256": "a82867cae085cd0b4c50f0b23ba889b86a0f5130ca3886ca56d31cf73d902509",
+      "fullSizeWebp": "images/hotel/room-bath-tub-1280.webp",
+      "originalBytes": 90282,
+      "fullSizeBytes": 55668
+    },
+    {
+      "key": "roomBathBed",
+      "source": "room-photos/6870a542d0e8e2.16204396.jpeg",
+      "roomType": "premium-suite",
+      "bookingPhotoId": "707148407",
+      "sha256": "7902eccfd964944773b8933edd4e8f98753909341ce201cb80b76a387a0de7a5",
+      "fullSizeWebp": "images/hotel/room-bath-bed-1280.webp",
+      "originalBytes": 95722,
+      "fullSizeBytes": 59518
+    },
+    {
+      "key": "roomBathBathroom",
+      "source": "room-photos/6870a542e2b878.97211515.jpeg",
+      "roomType": "premium-suite",
+      "bookingPhotoId": "707148408",
+      "sha256": "97fdf2d0242aa9e7c8356ffee3f7812be66c5925ef4a68f5a89375caf7c5b597",
+      "fullSizeWebp": "images/hotel/room-bath-bathroom-1280.webp",
+      "originalBytes": 51309,
+      "fullSizeBytes": 18880
+    },
+    {
+      "key": "premiumSound",
+      "source": "room-photos/6870a542d9e601.50424131.jpeg",
+      "sha256": "9c37321890b21dbdfd99bad027dd9d21553436be0a663cd4cc64a3f4f2851dac",
+      "fullSizeWebp": "images/hotel/premium-sound-1280.webp",
+      "originalBytes": 90357,
+      "fullSizeBytes": 56386
+    },
+    {
+      "key": "privateBathOverview",
+      "source": "room-photos/6870a28e688d48.21269484.jpeg",
+      "sha256": "e5ffa538da5bf1d0716cd250814ab36d49de7857cee0f268cf122fefbef5233d",
+      "fullSizeWebp": "images/hotel/private-bath-overview-1280.webp",
+      "originalBytes": 83407,
+      "fullSizeBytes": 48358
+    },
+    {
+      "key": "privateBathFaucet",
+      "source": "room-photos/6870a28e652e52.11071835.jpeg",
+      "sha256": "3fc1f5d618f3f73f8cab491303f6dc38c00e9b8632ccd8000ae5df301b9a4313",
+      "fullSizeWebp": "images/hotel/private-bath-faucet-1280.webp",
+      "originalBytes": 81814,
+      "fullSizeBytes": 47644
+    },
+    {
+      "key": "privateBathSide",
+      "source": "room-photos/6870a28e71c0c4.79585940.jpeg",
+      "sha256": "da4f16f59b467c6ec0c4adc2225cfcdb48ba12c3485ee5aee476a4bfe0d9fa82",
+      "fullSizeWebp": "images/hotel/private-bath-side-1280.webp",
+      "originalBytes": 64411,
+      "fullSizeBytes": 29972
+    },
+    {
+      "key": "privateBathEntry",
+      "source": "room-photos/6870a28e5eaf62.71987739.jpeg",
+      "sha256": "6c9803ac9eb687689316fefb83d22caabe4ff14a56a541bedd18fc5b27bfb3b9",
+      "fullSizeWebp": "images/hotel/private-bath-entry-1280.webp",
+      "originalBytes": 100136,
+      "fullSizeBytes": 65888
+    },
+    {
+      "key": "privateBathChanging",
+      "source": "room-photos/6870a28e5b63d3.58106368.jpeg",
+      "sha256": "ce993405b73bc2ad35cf7deb596d580367799e4826d01a1ae50e85865726a137",
+      "fullSizeWebp": "images/hotel/private-bath-changing-1280.webp",
+      "originalBytes": 100947,
+      "fullSizeBytes": 66932
+    }
+  ]
+}
