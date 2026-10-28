@@ -9,7 +9,7 @@ import { withBase } from '../utils/paths';
     {hotel.phone && <p><a href={telephoneHref}>{hotel.phone}</a></p>}
     {hotel.emails.map(email => <p><a href={`mailto:${email}`}>{email}</a></p>)}</div>
     <div class="footer-links"><a href={withBase('rooms/')}>객실 안내</a><a href={withBase('facilities/')}>프라이빗 욕장</a><a href={withBase('location/')}>오시는 길</a><a href={withBase('contact/')}>문의 및 안내</a></div>
-    <div class="footer-reservation"><p>종로에서 만나는 나만의 휴식.</p><BookingButton /><span class="muted small">예약은 Booking.com에서 진행됩니다.</span></div>
+    <div class="footer-reservation"><p>객실 예약</p><BookingButton /><span class="muted small">예약은 Booking.com에서 진행됩니다.</span></div>
   </div>
   <div class="container footer-bottom"><p>© {new Date().getFullYear()} NOUVER HOTEL &amp; SPA JONGNO</p><div><a href={withBase('privacy/')}>개인정보처리방침</a><a href={withBase('terms/')}>이용약관</a></div></div>
 </footer>

@@ -2,4 +2,4 @@
 interface Props { title: string; subtitle: string; description?: string; }
 const { title, subtitle, description } = Astro.props;
 ---
-<div class="container page-heading"><p class="eyebrow">{subtitle}</p><h1>{title}</h1>{description && <p class="heading-description">{description}</p>}</div>
+<div class="container page-heading"><p class="eyebrow">{subtitle}</p><h1>{title.replace(/\.$/, '')}</h1>{description && <p class="heading-description">{description}</p>}</div>

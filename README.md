@@ -6,6 +6,8 @@
 
 구현 범위와 검증 결과는 [docs/IMPLEMENTATION.md](docs/IMPLEMENTATION.md), PRD 이후 확정한 객실 정보와 사진 분류 근거는 [docs/CONTENT_VERIFICATION.md](docs/CONTENT_VERIFICATION.md), 실제 배포 확인은 [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md)에 정리했습니다.
 
+`design-taste-frontend`를 적용한 디자인 검토와 개편 결과는 [docs/DESIGN_REVIEW.md](docs/DESIGN_REVIEW.md)에 있습니다. 기존 골드 브랜드와 실사진을 중심으로 반복적인 카드·장식 문구를 줄이고, 본문과 모바일 화면을 다듬었습니다.
+
 ## 실행
 
 Node.js 22.23.4 이상(권장 24)에서:
