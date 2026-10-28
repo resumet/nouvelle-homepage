@@ -1,0 +1,12 @@
+---
+import type { HotelImage } from '../data/hotel';
+import { withBase } from '../utils/paths';
+interface Props { image?: HotelImage | null; label: string; kind?: 'room' | 'bath' | 'sound' | 'city' | 'hero'; priority?: boolean; class?: string; }
+const { image, label, kind = 'room', priority = false, class: className = '' } = Astro.props;
+---
+<div class:list={['media-frame', `media-${kind}`, className, { 'has-image': !!image }]}>
+  {image ? <img src={withBase(image.src)} alt={image.alt} width={image.width} height={image.height} loading={priority ? 'eager' : 'lazy'} fetchpriority={priority ? 'high' : 'auto'} decoding="async" /> : <>
+    <div class="media-linework" aria-hidden="true"><i></i><i></i><i></i></div>
+    <div class="media-placeholder"><span class="media-placeholder-name">{label}</span><span>실사진 준비 중</span></div>
+  </>}
+</div>

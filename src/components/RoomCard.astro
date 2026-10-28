@@ -1,0 +1,13 @@
+---
+import type { Room } from '../data/rooms';
+import MediaFrame from './MediaFrame.astro';
+import { withBase } from '../utils/paths';
+interface Props { room: Room; }
+const { room } = Astro.props;
+---
+<article class="room-card">
+  <a class="room-image-link" href={withBase(`rooms/${room.slug}/`)}><MediaFrame image={room.images[0]} label={room.name} /><span class="sr-only"> · {room.name} 상세 보기</span></a>
+  <div class="room-card-content"><div class="room-card-title"><h3><a href={withBase(`rooms/${room.slug}/`)}>{room.name}</a></h3><span>{room.area}<small>㎡</small></span></div>
+  <p class="room-tagline">{room.copy.ko.title}</p>
+  <div class="room-card-bottom"><span class="muted">시티뷰 <span class="separator">/</span> {room.count}실 {room.slug === 'premium-suite' && <><span class="separator">/</span> 객실 내 2인용 욕탕</>}</span><a class="circle-link" href={withBase(`rooms/${room.slug}/`)} aria-label={`${room.name} 자세히 보기`}>↗</a></div></div>
+</article>

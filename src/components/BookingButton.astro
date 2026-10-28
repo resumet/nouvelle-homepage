@@ -1,0 +1,14 @@
+---
+import { bookingUrl, canBook } from '../data/booking';
+interface Props { label?: string; variant?: 'gold' | 'outline'; class?: string; }
+const { label = 'BOOK NOW', variant = 'gold', class: className = '' } = Astro.props;
+---
+{canBook ? (
+  <a class:list={['button', `button-${variant}`, className]} href={bookingUrl} target="_blank" rel="noopener noreferrer" aria-label={`${label} · Booking.com 새 탭에서 열기`}>
+    {label}<span aria-hidden="true">↗</span>
+  </a>
+) : (
+  <button class:list={['button', `button-${variant}`, 'booking-pending', className]} disabled title="Booking.com 호텔 예약 링크를 준비하고 있습니다.">
+    <span>{label}<span class="booking-status">예약 링크 준비 중</span></span>
+  </button>
+)}

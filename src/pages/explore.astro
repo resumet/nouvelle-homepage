@@ -1,0 +1,10 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeading from '../components/PageHeading.astro';
+import AttractionCard from '../components/AttractionCard.astro';
+import { attractions } from '../data/attractions';
+---
+<BaseLayout title="종로 주변 여행" description="광장시장, DDP, 종묘, 창경궁, 인사동, 청계천. 누베르 호텔 종로점과 함께 둘러볼 서울의 여행지를 알아보세요." breadcrumbs={[{ label: '주변 여행', path: 'explore/' }]}>
+  <PageHeading title="서울의 중심에서 시작하는 여행." subtitle="DISCOVER JONGNO" description="오랜 시간과 새로운 감각이 만나는 곳. 나만의 속도로 서울을 발견해 보세요." />
+  <section class="container page-section"><div class="attraction-grid">{attractions.map((attraction, index) => <AttractionCard attraction={attraction} index={index} />)}</div><p class="travel-note muted small">지도 링크는 Google 지도를 새 탭에서 엽니다. 방문 전 각 장소의 운영일과 관람 정보를 확인해 주세요.</p></section>
+</BaseLayout>

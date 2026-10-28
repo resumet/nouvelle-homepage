@@ -1,0 +1,12 @@
+---
+import type { Attraction } from '../data/attractions';
+import { googleMap } from '../data/attractions';
+import MediaFrame from './MediaFrame.astro';
+interface Props { attraction: Attraction; index: number; }
+const { attraction, index } = Astro.props;
+---
+<article class="attraction-card">
+  {attraction.image && <MediaFrame image={attraction.image} label={attraction.name.ko} kind="city" />}
+  <div class="attraction-top"><span class="attraction-purpose">{attraction.purpose}</span><span class="attraction-index" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span></div>
+  <h3>{attraction.name.ko}</h3><p>{attraction.description.ko}</p><div class="attraction-bottom"><span class="muted small">{attraction.location}</span><a href={googleMap(attraction.query)} target="_blank" rel="noopener noreferrer" aria-label={`${attraction.name.ko} 지도 보기 · Google 지도 새 탭에서 열기`}>지도 보기 <span aria-hidden="true">↗</span></a></div>
+</article>
