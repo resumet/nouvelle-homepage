@@ -8,3 +8,7 @@ dist/
 artifacts/
 .playwright-mcp/
 *.log
+/bath-photo/
+/roby-photos/
+/room-photos/
+/user-photos/

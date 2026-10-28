@@ -1,6 +1,8 @@
+import { photos } from './photos.ts';
+
 export type Locale = 'ko' | 'zh-CN' | 'en' | 'ja';
 export type Localized<T> = { ko: T } & Partial<Record<Exclude<Locale, 'ko'>, T>>;
-export type HotelImage = { src: string; alt: string; width: number; height: number };
+export type HotelImage = { src: string; alt: string; width: number; height: number; variants?: { src: string; width: number }[] };
 
 export const hotel = {
   name: '누베르 호텔 앤 스파 종로점',
@@ -13,9 +15,10 @@ export const hotel = {
   mapsUrl: '',
   speakerModel: '',
   speakerRoomScope: '',
-  heroImage: null as HotelImage | null,
-  soundImage: null as HotelImage | null,
-  bathImages: [] as HotelImage[],
+  heroImage: photos.roomBathBedroom as HotelImage,
+  lobbyImage: photos.lobby as HotelImage,
+  soundImage: photos.premiumSound as HotelImage,
+  bathImages: [photos.privateBathOverview, photos.privateBathFaucet, photos.privateBathSide, photos.privateBathEntry, photos.privateBathChanging] as HotelImage[],
 };
 
 export const telephoneHref = `tel:${hotel.phone.replace(/[^\d]/g, '').replace(/^0/, '+82')}`;

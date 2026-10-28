@@ -1,5 +1,6 @@
-import { existsSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
+import sharp from 'sharp';
 import { hotel } from '../src/data/hotel.ts';
 import { rooms } from '../src/data/rooms.ts';
 import { bookingUrl, isValidBookingUrl } from '../src/data/booking.ts';
@@ -21,7 +22,23 @@ for (const group of imageGroups) {
     const publicRoot = resolve('public');
     if (!file.startsWith(publicRoot + '\\') && !file.startsWith(publicRoot + '/')) missing.push(`${group.label}: 사진 경로는 public 내부여야 합니다`);
     else if (!existsSync(file) || !image.alt.trim() || image.width <= 0 || image.height <= 0) missing.push(`${group.label}: 사진 파일/설명/크기 확인`);
+    else {
+      try {
+        const metadata = await sharp(file).metadata();
+        if (metadata.width !== image.width || metadata.height !== image.height) missing.push(`${group.label}: 사진의 실제 크기와 데이터 불일치`);
+        for (const variant of image.variants ?? []) {
+          const variantFile = resolve('public', variant.src);
+          if (!variantFile.startsWith(publicRoot + '\\') && !variantFile.startsWith(publicRoot + '/')) { missing.push(`${group.label}: 반응형 사진 경로 확인`); continue; }
+          const variantMetadata = await sharp(variantFile).metadata();
+          if (variantMetadata.width !== variant.width) missing.push(`${group.label}: 반응형 사진 크기 불일치`);
+        }
+      } catch { missing.push(`${group.label}: 이미지 디코딩 실패 또는 반응형 파일 누락`); }
+    }
   }
+}
+const provenance = JSON.parse(readFileSync('docs/PHOTO_ASSETS.json', 'utf8')) as { images: { fullSizeWebp: string; roomType?: string }[] };
+for (const room of rooms) for (const image of room.images) {
+  if (provenance.images.find(item => item.fullSizeWebp === image.src)?.roomType !== room.slug) missing.push(`${room.name}: 확인된 객실 유형과 사진 분류 불일치`);
 }
 if (missing.length) {
   console.error(`공개 배포 전 다음 자료를 등록하세요:\n${missing.map(item => `- ${item}`).join('\n')}`);

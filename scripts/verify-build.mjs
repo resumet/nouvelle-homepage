@@ -30,6 +30,13 @@ for (const file of pages) {
     assert.ok(url.startsWith(base), `${file}: base prefix missing: ${url}`);
     urls.add(url.split(/[?#]/)[0]); links++;
   }
+  for (const match of html.matchAll(/\bsrcset="([^"]+)"/g)) {
+    for (const candidate of match[1].split(',')) {
+      const url = candidate.trim().split(/\s+/)[0];
+      assert.ok(url.startsWith(base), `${file}: responsive image base prefix missing: ${url}`);
+      urls.add(url); links++;
+    }
+  }
   for (const match of html.matchAll(/<a\b[^>]*href="(https:\/\/[^\"]*booking\.com[^\"]*)"[^>]*>/g)) {
     assert.match(match[0], /target="_blank"/);
     assert.match(match[0], /rel="noopener noreferrer"/);
