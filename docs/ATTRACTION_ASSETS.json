@@ -1,0 +1,89 @@
+{
+  "processing": "Downsampling and WebP encoding only; displayed with object-fit cover. Historical photographs, not live views. Separate from operator-provided hotel images.",
+  "sources": [
+    {
+      "slug": "gwangjang",
+      "title": "Gwangjang Market, Seoul 02.jpg",
+      "alt": "음식 노점과 방문객이 있는 광장시장 내부",
+      "author": "Bgag",
+      "license": "CC0 1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AGwangjang_Market%2C_Seoul_02.jpg",
+      "photographedAt": "2022-09-26",
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/8/81/Gwangjang_Market%2C_Seoul_02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "downloadedUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/81/Gwangjang_Market%2C_Seoul_02.jpg/1280px-Gwangjang_Market%2C_Seoul_02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "sha256": "94d374bc7ea1595d9fb64b3ce1310cb7fee86aa3045f6f3a3de8980088a1adc4",
+      "verifiedLicense": "CC0"
+    },
+    {
+      "slug": "ddp",
+      "title": "Dongdaemun Design Plaza - DDP2376.jpg",
+      "alt": "저녁 조명이 켜진 동대문디자인플라자의 곡선 외관",
+      "author": "lumoplank",
+      "license": "CC0 1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ADongdaemun_Design_Plaza_-_DDP2376.jpg",
+      "photographedAt": "before 4 October 2024<div style=\"display: none;\">date QS:P,+2024-10-04T00:00:00Z/7,P1326,+2024-10-04T00:00:00Z/11</div>",
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/c/cf/Dongdaemun_Design_Plaza_-_DDP2376.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "downloadedUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cf/Dongdaemun_Design_Plaza_-_DDP2376.jpg/1280px-Dongdaemun_Design_Plaza_-_DDP2376.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "sha256": "957d4f0f797a0efde106b598c40d01972713a67949fd26364e7c507c458819fc",
+      "verifiedLicense": "CC0"
+    },
+    {
+      "slug": "jongmyo",
+      "title": "Jongmyo Shrine 01.jpg",
+      "alt": "나무 사이로 보이는 종묘 입구의 전통 문",
+      "author": "Bgag",
+      "license": "CC0 1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AJongmyo_Shrine_01.jpg",
+      "photographedAt": "2022-09-26",
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/d/df/Jongmyo_Shrine_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "downloadedUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/df/Jongmyo_Shrine_01.jpg/1280px-Jongmyo_Shrine_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "sha256": "eedfa09f6956c14cfef805556659433e39b2820acda3d8e564ebb3a553391c7d",
+      "verifiedLicense": "CC0"
+    },
+    {
+      "slug": "changgyeonggung",
+      "title": "Changgyeonggung, Seoul - Changgyeonggung2265.jpg",
+      "alt": "해 질 무렵 조명이 켜진 창경궁 명정전",
+      "author": "lumoplank",
+      "license": "CC0 1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File%3AChanggyeonggung%2C_Seoul_-_Changgyeonggung2265.jpg",
+      "photographedAt": "before 18 September 2024<div style=\"display: none;\">date QS:P,+2024-09-18T00:00:00Z/7,P1326,+2024-09-18T00:00:00Z/11</div>",
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/7/78/Changgyeonggung%2C_Seoul_-_Changgyeonggung2265.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "downloadedUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/78/Changgyeonggung%2C_Seoul_-_Changgyeonggung2265.jpg/1280px-Changgyeonggung%2C_Seoul_-_Changgyeonggung2265.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "sha256": "3b948e8b7978bb1406f9c87441abfa0342a97c95b22a70f6dda756684dc2c584",
+      "verifiedLicense": "CC0"
+    },
+    {
+      "slug": "insadong",
+      "title": "Seoul-Insadong-06.jpg",
+      "alt": "인사동 상점의 외관",
+      "author": "Tom@HK",
+      "license": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ASeoul-Insadong-06.jpg",
+      "photographedAt": "2007-02-26",
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/b/bc/Seoul-Insadong-06.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "downloadedUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bc/Seoul-Insadong-06.jpg/1280px-Seoul-Insadong-06.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "sha256": "08168c871698345ccaaceb3e7f9b8c40041fa5a83e73ff23427c8045c3166bc3",
+      "verifiedLicense": "CC BY 2.0"
+    },
+    {
+      "slug": "cheonggyecheon",
+      "title": "Cheonggyecheon, Seoul - Cheonggyecheon2321.jpg",
+      "alt": "돌다리와 산책로가 이어지는 청계천",
+      "author": "lumoplank",
+      "license": "CC0 1.0",
+      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File%3ACheonggyecheon%2C_Seoul_-_Cheonggyecheon2321.jpg",
+      "photographedAt": "before 28 September 2024<div style=\"display: none;\">date QS:P,+2024-09-28T00:00:00Z/7,P1326,+2024-09-28T00:00:00Z/11</div>",
+      "originalUrl": "https://upload.wikimedia.org/wikipedia/commons/0/00/Cheonggyecheon%2C_Seoul_-_Cheonggyecheon2321.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "downloadedUrl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/00/Cheonggyecheon%2C_Seoul_-_Cheonggyecheon2321.jpg/1280px-Cheonggyecheon%2C_Seoul_-_Cheonggyecheon2321.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "sha256": "f948e59333e96f09cf69bcf4e6acd97aa9f74c9505ffe9c328c418c2314cb18d",
+      "verifiedLicense": "CC0"
+    }
+  ]
+}

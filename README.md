@@ -37,7 +37,7 @@ Astro + TypeScript + Tailwind CSS v4, 정적 11페이지, 모바일 메뉴/고�
 - `src/data/booking.ts`: 확인한 HTTPS Booking.com **호텔 상세** URL을 `bookingUrl`에 입력하세요. 공통 버튼은 자동으로 같은 URL로 활성화되며 새 탭과 `noopener noreferrer`를 적용합니다.
 - `src/data/hotel.ts`: 주소·전화·이메일 배열·지도 URL, 교통 안내 및 호텔 실사진을 관리합니다. 전화 링크는 해외에서 사용할 수 있도록 국제 형식으로 연결합니다. 지도는 확인된 호텔 주소의 검색 링크를 제공합니다.
 - `src/data/rooms.ts`: 객실별 실제 사진을 관리합니다. 디럭스·스위트 모두 예약 페이지 기준 25㎡, 더블침대 1개이며 원형 욕조를 갖춥니다. 객실별 정원·운영 정책은 확인 전 임의 추가하지 마세요.
-- `src/data/attractions.ts`: 관광지 정보, 실제 사진(선택), 현지어 번역을 관리합니다. 사진이 없으면 텍스트 안내를 제공합니다.
+- `src/data/attractions.ts`: 관광지 정보와 현지어 번역을 관리합니다. 관광지 실사진 6장은 `attraction-photos.ts`에 있으며, 카드에 촬영자·출처·라이선스를 표시합니다.
 - 번역은 `Localized<T>`에 확장하고, 전체 검수와 경로·canonical·hreflang 구현을 마친 후 공개하세요. 미완성 언어 전환 메뉴는 노출하지 않습니다.
 
 사진은 `public/images/` 하위에 넣고 WebP/AVIF 권장, 다음 형태로 등록합니다. 경로는 `public/`을 제외한 상대 경로입니다.
@@ -53,6 +53,8 @@ Astro + TypeScript + Tailwind CSS v4, 정적 11페이지, 모바일 메뉴/고�
 `scripts/photo-selections.json`에 원본 경로, 사진 설명, 객실 분류 및 확인한 예약 사이트 사진 ID를 지정합니다. 원본이 있는 로컬 폴더에서 `npm run assets:photos`를 실행하면 `public/images/hotel/`의 640·960·1280px WebP와 `src/data/photos.ts`, `docs/PHOTO_ASSETS.json`을 생성합니다. 원본은 축소만 하고 확대·생성 보정은 하지 않습니다. `npm run assets:og`는 객실 실사진으로 소셜 미리보기를 갱신합니다.
 
 원본 사진 폴더는 로컬에 보존하고 Git 추적에서 제외했습니다. 생성된 웹 이미지는 저장소에 포함하므로 CI 빌드에 원본이 필요하지 않습니다. `srcset`·`sizes`로 기기별 파일을 선택하며 히어로와 상세 대표 사진을 우선 불러오고 나머지는 지연 로드합니다.
+
+관광지 사진은 호텔 실사진과 별도로 Wikimedia Commons의 CC0 5장과 CC BY 2.0 1장을 사용합니다. `docs/ATTRACTION_ASSETS.json`에 원본 URL·촬영 시점·라이선스·해시를 기록했습니다. `node scripts/prepare-attractions.mjs`는 라이선스를 대조한 뒤 640·960·1280px WebP를 생성합니다. 재생성에는 네트워크가 필요하며, CI는 저장소에 포함된 파일을 사용합니다.
 
 ## GitHub Pages
 
