@@ -1,8 +1,8 @@
 # 누베르 호텔 앤 스파 종로점 공식 홈페이지 PRD
 
-> **NOUVER HOTEL & SPA JONGNO**  
-> 버전: **2.1**  
-> 기준일: **2026-10-28**  
+> **Nouvelle Hotel and Spa Jongro**
+> 버전: **2.2**
+> 기준일: **2026-10-29**
 > 대상 저장소: **https://github.com/resumet/nouvelle-homepage**  
 > 배포: **GitHub Pages**  
 > 유형: **정적 홍보·마케팅 홈페이지**
@@ -45,15 +45,15 @@
 | 구분 | 정보 |
 |---|---|
 | 공식 명칭 | 누베르 호텔 앤 스파 종로점 |
-| 영문 명칭 | NOUVER HOTEL & SPA JONGNO |
-| 지역 | 서울 종로5가 (정확한 도로명주소 확인 필요) |
+| 영문 명칭 | Nouvelle Hotel and Spa Jongro |
+| 지역 | 서울 종로구 종로31길 46-8 (종로5가) |
 | 콘셉트 | 도심 속 편안하면서도 트렌디한 휴식형 호텔 |
 | 총 객실 | 30실 |
 | 디럭스 | 27실, 25㎡, 시티뷰 |
 | 프리미엄 스위트 | 3실, 48㎡, 시티뷰, 객실 내 2인용 욕탕 |
 | 객실 차별점 | 프리미엄 스피커 (설치 객실 범위·제품 모델 확인 필요) |
 | 지하 시설 | 최대 2인용 프라이빗 욕장, 24시간 운영 |
-| 예약 | Booking.com 단일 링크 |
+| 예약 | Booking.com 동일 호텔의 한국어·영어·중국어 링크 |
 | 제공하지 않는 시설/서비스 | 레스토랑, 카페, 피트니스, 마사지·스파 트리트먼트 |
 
 ### 콘텐츠 정확성 규칙
@@ -280,14 +280,15 @@ CTA: **BOOK NOW** → Booking.com.
 ## 8. Booking.com 바로가기
 
 - 홈페이지에서 예약·결제·회원가입을 처리하지 않음
-- 헤더, 히어로, 객실 상세, 모바일 하단 고정 CTA, 푸터의 BOOK NOW는 **동일한 Booking.com 호텔 URL**로 연결
+- 헤더, 히어로, 객실 상세, 모바일 하단 고정 CTA, 푸터의 BOOK NOW는 **동일 호텔의 현재 언어 Booking.com URL**로 연결
 - 예약 버튼 클릭 시 외부 예약 페이지를 **새 탭**으로 열고 `rel="noopener noreferrer"` 적용
 - 예약 URL은 `src/data/booking.ts`에서 단일 관리
 - 실제 URL 미등록 시 운영용 사이트에 가짜 Booking.com 링크를 노출하지 않음
 
 ```ts
 // src/data/booking.ts
-export const bookingUrl = ""; // 실제 Booking.com 호텔 URL 입력
+export const bookingUrl = 'https://www.booking.com/hotel/kr/nouvelle-and-spa-seoul-jongro.ko.html';
+// 영어는 .en-gb.html, 중국어는 .zh-cn.html을 사용하며 호텔 식별 경로는 동일하게 유지한다.
 ```
 
 **구현하지 않음:** 예약 팝업/모달, 객실별 예약 분기, OTA 선택, 예약 추적 이벤트, 결제 완료 추적, GA4.
@@ -298,7 +299,8 @@ export const bookingUrl = ""; // 실제 Booking.com 호텔 URL 입력
 
 ### 9.1 위치(`/location/`)
 
-- 정확한 도로명주소·지도·교통 안내(확인 후 게시)
+- 도로명주소 `서울 종로구 종로31길 46-8`과 확인된 교통 안내 게시
+- 차량 내비게이션 검색 문구는 공식 영문명 `Nouvelle Hotel and Spa Jongro`로 통일
 - Google Maps, 네이버 지도 등 외부 지도 서비스 링크
 - 접근이 제한되는 국가/기기를 고려해 주소 텍스트 항상 제공
 - 검증되지 않은 소요 시간 기재 금지
@@ -369,7 +371,7 @@ export const bookingUrl = ""; // 실제 Booking.com 호텔 URL 입력
 
 ### 11.3 기본 배포 URL
 
-예정 주소: **https://resumet.github.io/nouvelle-homepage/**
+운영 주소: **https://nouvellehotelandspa.com/**
 
 GitHub Pages 설정과 최초 배포가 성공해야 실제 접속 가능하다. 별도 공식 도메인 확정 시 설정을 갱신한다.
 
@@ -512,12 +514,12 @@ nouvelle-homepage/
 
 ### Phase 3 — 마감 및 배포
 
-- [ ] 실제 호텔 사진 반영
+- [x] 실제 호텔 사진 반영
 - [ ] 상세 콘텐츠 및 미확정 운영정보 검증
-- [ ] 메타태그, Sitemap, 구조화 데이터
+- [x] 메타태그, Sitemap, 구조화 데이터
 - [ ] 반응형·접근성·성능 테스트
-- [ ] 실주소 및 Booking.com URL 확인
-- [ ] GitHub Pages 배포·링크 검수
+- [x] 실주소 및 Booking.com URL 확인
+- [x] GitHub Pages 배포·링크 검수
 
 ---
 
@@ -528,7 +530,7 @@ nouvelle-homepage/
 - [ ] 모든 BOOK NOW 버튼이 정확한 Booking.com 호텔 페이지로 이동
 - [ ] 이미지 갤러리/모바일 터치 기능 정상
 - [ ] 지도의 외부 링크 정상
-- [ ] `/nouvelle-homepage/` 하위 경로에서 모든 CSS·이미지·내부 링크 정상
+- [ ] 운영 도메인 `/` 경로에서 모든 CSS·이미지·내부 링크 정상
 - [ ] 404 페이지 제공
 
 ### 콘텐츠
@@ -555,18 +557,18 @@ nouvelle-homepage/
 | 자료/정책 | 상태 |
 |---|---|
 | GitHub 저장소 `resumet/nouvelle-homepage` | 확인됨 |
-| Booking.com 실제 호텔 URL | 필요 |
-| 공식 도메인 | 미정 |
+| Booking.com 실제 호텔 URL | 확인됨 |
+| 공식 도메인 | `https://nouvellehotelandspa.com/` |
 | 호텔 로고 | 필요 |
-| 외관·디럭스·스위트·욕장 실사 | 필요 |
+| 외관·디럭스·스위트·욕장 실사 | 반영됨 |
 | 프리미엄 스피커 사진·모델명·설치 객실 범위 | 확인 필요 |
-| 정확한 도로명주소 | 필요 |
-| 대표 전화번호·이메일 | 필요 |
+| 정확한 도로명주소 | `서울 종로구 종로31길 46-8` |
+| 대표 전화번호·이메일 | `02-747-3002`, `resumet@naver.com`, `narasysj@naver.com` |
 | 체크인·체크아웃 시간 | 확인 필요 |
 | 객실별 최대 정원 | 확인 필요 |
 | 프라이빗 욕장 요금·예약 방식·회차 | 확인 필요 |
 | 공식 SNS URL | 있는 경우 필요 |
-| 사이트 전체 언어 지원 범위 | 확정 필요 |
+| 사이트 전체 언어 지원 범위 | 한국어·영어·중국어 간체 제공 |
 | 실제 투숙객 후기 및 사용 허가 | 선택 |
 
 ---

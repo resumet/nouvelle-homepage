@@ -1,5 +1,6 @@
 ---
 import BookingButton from './BookingButton.astro';
+import { brandCaption, brandWordmark, officialEnglishName } from '../data/hotel';
 import { contentPath, localeMeta, localePath, publishedLocales, type Locale } from '../i18n/config';
 import { getMessages } from '../i18n/messages';
 interface Props { locale?: Locale; }
@@ -13,8 +14,8 @@ const isActive = (path: string) => path ? current.startsWith(path) : current ===
 <header class="site-header">
   <div class="header-inner">
     <a class="wordmark" href={localePath(locale)} aria-label={m.common.homeAria}>
-      <span>Nouvelle</span>
-      <span class="wordmark-caption">HOTEL &amp; SPA JONGNO</span>
+      <span>{brandWordmark}</span>
+      <span class="wordmark-caption">{brandCaption}</span>
     </a>
     <nav class="desktop-nav" aria-label={m.common.mainNav}>
       {links.map(({ path, label }) => <a href={localePath(locale, path)} aria-current={isActive(path) ? 'page' : undefined}>{label}</a>)}
@@ -24,7 +25,7 @@ const isActive = (path: string) => path ? current.startsWith(path) : current ===
   </div>
 </header>
 <dialog id="mobile-menu" class="mobile-menu" aria-label={m.common.mainNav}>
-  <div class="mobile-menu-top"><span class="eyebrow">NOUVELLE JONGNO</span><button class="menu-close" aria-label={m.common.menuClose}>×</button></div>
+  <div class="mobile-menu-top"><span class="eyebrow">{officialEnglishName.toUpperCase()}</span><button class="menu-close" aria-label={m.common.menuClose}>×</button></div>
   <nav aria-label={m.common.mobileNav}>{links.map(({ path, label }) => <a href={localePath(locale, path)} aria-current={isActive(path) ? 'page' : undefined}>{label}<span aria-hidden="true">↗</span></a>)}</nav>
   <nav class="mobile-languages" aria-label={m.common.language}>{publishedLocales.map(item => <a href={localePath(item, languageTarget)} lang={localeMeta[item].htmlLang} aria-current={item === locale ? 'true' : undefined}>{localeMeta[item].label}</a>)}</nav>
   <a class="text-link" href={localePath(locale, 'contact/')}>{m.common.contact} <span aria-hidden="true">↗</span></a>

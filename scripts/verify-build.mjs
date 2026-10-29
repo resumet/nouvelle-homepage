@@ -2,6 +2,7 @@ import { readFile, readdir, stat } from 'node:fs/promises';
 import { resolve, join, extname } from 'node:path';
 import assert from 'node:assert/strict';
 import { bookingUrlForLocale, canBook } from '../src/data/booking.ts';
+import { officialEnglishName } from '../src/data/hotel.ts';
 
 const root = resolve('dist');
 const base = '/';
@@ -29,6 +30,9 @@ for (const page of pages) {
   titles.add(title);
   assert.ok(html.includes(`<html lang="${page.lang}"`), `${file}: document language`);
   assert.match(html, /name="description" content="[^"]+"/, `${file}: description`);
+  assert.ok(title.includes(officialEnglishName), `${file}: official brand in title`);
+  assert.ok(html.includes(`property="og:site_name" content="${officialEnglishName}"`), `${file}: official Open Graph site name`);
+  assert.doesNotMatch(html, /NOUVER|HOTEL &amp; SPA JONGNO|Nouvelle Hotel and Spa Seoul Jongno/i, `${file}: legacy brand spelling`);
   const expected = `${site}${base}${page.path}`;
   assert.ok(html.includes(`rel="canonical" href="${expected}"`), `${file}: correct canonical`);
   if (page.is404) assert.match(html, /noindex, follow/);
@@ -40,7 +44,16 @@ for (const page of pages) {
     }
     assert.ok(html.includes(`hreflang="x-default" href="${site}${base}${contentPath}"`), `${file}: x-default alternate`);
   }
-  for (const match of html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) JSON.parse(match[1]);
+  let hasOfficialHotelSchema = false;
+  for (const match of html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) {
+    const structuredData = JSON.parse(match[1]);
+    const hotelNode = structuredData['@graph']?.find(node => node['@type'] === 'Hotel');
+    if (hotelNode) {
+      assert.equal(hotelNode.name, officialEnglishName, `${file}: official Hotel schema name`);
+      hasOfficialHotelSchema = true;
+    }
+  }
+  if (!page.is404) assert.ok(hasOfficialHotelSchema, `${file}: Hotel structured data`);
   for (const match of html.matchAll(/(?:href|src)="([^"]+)"/g)) {
     const url = match[1].replaceAll('&amp;', '&');
     if (url.startsWith('//')) throw new Error(`${file}: protocol-relative URL ${url}`);

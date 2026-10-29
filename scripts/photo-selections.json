@@ -1,5 +1,5 @@
 [
-  { "key": "lobby", "source": "roby-photos/6870a2eb4e2b28.30290677.jpeg", "alt": { "ko": "벽돌 마감과 목재 카운터가 어우러진 누베르 호텔 로비", "en": "Nouvelle Hotel lobby with brick walls and a wood reception counter", "zh-CN": "采用砖墙与木质前台设计的Nouvelle酒店大堂" } },
+  { "key": "lobby", "source": "roby-photos/6870a2eb4e2b28.30290677.jpeg", "alt": { "ko": "벽돌 마감과 목재 카운터가 어우러진 누베르 호텔 로비", "en": "Nouvelle Hotel and Spa Jongro lobby with brick walls and a wood reception counter", "zh-CN": "采用砖墙与木质前台设计的Nouvelle酒店大堂" } },
   { "key": "deluxeBedroom", "source": "room-photos/6870a4fd17d7d4.50713697.jpeg", "alt": { "ko": "디럭스 더블룸의 침대와 긴 테이블 전경", "en": "Deluxe Double Room with a bed and long table", "zh-CN": "配有双人床与长桌的豪华双人间" }, "roomType": "deluxe", "bookingPhotoId": "707148347" },
   { "key": "deluxeBed", "source": "user-photos/6870a4fd1c7db3.91473755.jpeg", "alt": { "ko": "디럭스 더블룸의 더블침대와 목재 선반", "en": "Double bed and wood shelving in the Deluxe Room", "zh-CN": "豪华客房内的双人床与木质搁架" }, "roomType": "deluxe", "bookingPhotoId": "707148344" },
   { "key": "deluxeBathtub", "source": "room-photos/6870a4fd25e5d0.04095725.jpeg", "alt": { "ko": "디럭스 더블룸에 마련된 원형 욕조", "en": "Private round bathtub in the Deluxe Double Room", "zh-CN": "豪华双人间内的私人圆形浴缸" }, "roomType": "deluxe", "bookingPhotoId": "707148348" },

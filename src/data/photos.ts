@@ -6,7 +6,7 @@ export const photos = {
     "src": "images/hotel/lobby-1280.webp",
     "alt": {
       "ko": "벽돌 마감과 목재 카운터가 어우러진 누베르 호텔 로비",
-      "en": "Nouvelle Hotel lobby with brick walls and a wood reception counter",
+      "en": "Nouvelle Hotel and Spa Jongro lobby with brick walls and a wood reception counter",
       "zh-CN": "采用砖墙与木质前台设计的Nouvelle酒店大堂"
     },
     "width": 1280,

@@ -1,5 +1,5 @@
 ---
-import { hotel, hotelText, siteTitle } from '../data/hotel';
+import { hotel, hotelText, officialEnglishName, siteTitle } from '../data/hotel';
 import { withBase } from '../utils/paths';
 import { contentPath, imageAlt, localeMeta, localePath, publishedLocales, type Locale } from '../i18n/config';
 import { getMessages } from '../i18n/messages';
@@ -12,7 +12,8 @@ const canonical = new URL(canonicalPath ?? Astro.url.pathname, site).href;
 const root = new URL(withBase(), site).href;
 const documentTitle = canonical === root ? siteTitle : `${title} | ${siteTitle}`;
 const routePath = contentPath(Astro.url.pathname);
-const graph: Record<string, unknown>[] = [{ '@type': 'Hotel', '@id': `${root}#hotel`, name: hotelCopy.name, alternateName: hotel.englishName, url: new URL(localePath(locale), site).href, inLanguage: localeMeta[locale].htmlLang, ...(hotel.heroImage ? { image: new URL(withBase(hotel.heroImage.src), site).href } : {}), address: { '@type': 'PostalAddress', streetAddress: hotelCopy.address, addressCountry: 'KR' }, telephone: hotel.phone, email: hotel.emails, numberOfRooms: hotel.totalRooms }];
+const alternateNames = [...new Set([hotel.name, ...Object.values(hotelText).map(item => item.name)])].filter(name => name !== officialEnglishName);
+const graph: Record<string, unknown>[] = [{ '@type': 'Hotel', '@id': `${root}#hotel`, name: officialEnglishName, alternateName: alternateNames, url: new URL(localePath(locale), site).href, inLanguage: localeMeta[locale].htmlLang, ...(hotel.heroImage ? { image: new URL(withBase(hotel.heroImage.src), site).href } : {}), address: { '@type': 'PostalAddress', streetAddress: hotelCopy.address, addressCountry: 'KR' }, telephone: hotel.phone, email: hotel.emails, numberOfRooms: hotel.totalRooms }];
 if (breadcrumbs.length) graph.push({ '@type': 'BreadcrumbList', itemListElement: [{ label: m.common.nav.home, path: '' }, ...breadcrumbs].map((item, index) => ({ '@type': 'ListItem', position: index + 1, name: item.label, item: new URL(localePath(locale, item.path), site).href })) });
 ---
 <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />

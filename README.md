@@ -1,6 +1,6 @@
-# NOUVER HOTEL & SPA JONGNO
+# Nouvelle Hotel and Spa Jongro
 
-누베르 호텔 앤 스파 종로점 정적 홈페이지. 요구사항은 [PRD.md](PRD.md)에 있습니다. `docs/`는 초기 상태에서 비어 있어 루트 PRD v2.1을 기준으로 구현했습니다.
+누베르 호텔 앤 스파 종로점 정적 홈페이지. 요구사항은 [PRD.md](PRD.md)에 있습니다. `docs/`는 초기 상태에서 비어 있어 루트 PRD v2.2를 기준으로 구현했습니다.
 
 공개 홈페이지: **https://nouvellehotelandspa.com/**
 

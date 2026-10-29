@@ -1,6 +1,6 @@
 ---
 import BookingButton from './BookingButton.astro';
-import { hotel, hotelText, telephoneHref } from '../data/hotel';
+import { brandCaption, brandWordmark, hotel, hotelText, officialEnglishName, telephoneHref } from '../data/hotel';
 import { localePath, type Locale } from '../i18n/config';
 import { getMessages } from '../i18n/messages';
 interface Props { locale?: Locale; }
@@ -10,12 +10,12 @@ const hotelCopy = hotelText[locale];
 ---
 <footer class="site-footer">
   <div class="container footer-main">
-    <div><a class="wordmark" href={localePath(locale)} aria-label={m.common.homeAria}><span>Nouvelle<span class="wordmark-period">.</span></span><span class="wordmark-caption">HOTEL &amp; SPA JONGNO</span></a><p class="footer-name">{hotelCopy.name}</p><p class="muted">{hotelCopy.address || hotelCopy.region}</p>
+    <div><a class="wordmark" href={localePath(locale)} aria-label={m.common.homeAria}><span>{brandWordmark}<span class="wordmark-period">.</span></span><span class="wordmark-caption">{brandCaption}</span></a><p class="footer-name">{hotelCopy.name}</p><p class="muted">{hotelCopy.address || hotelCopy.region}</p>
     {hotel.phone && <p><a href={telephoneHref}>{hotel.phone}</a></p>}
     {hotel.emails.map(email => <p><a href={`mailto:${email}`}>{email}</a></p>)}</div>
     <div class="footer-links"><a href={localePath(locale, 'rooms/')}>{m.common.footerLinks.rooms}</a><a href={localePath(locale, 'facilities/')}>{m.common.footerLinks.bath}</a><a href={localePath(locale, 'location/')}>{m.common.footerLinks.location}</a><a href={localePath(locale, 'contact/')}>{m.common.footerLinks.contact}</a></div>
     <div class="footer-reservation"><p>{m.common.footerTagline}</p><BookingButton locale={locale} /><span class="muted small">{m.common.bookingExternal}</span></div>
   </div>
-  <div class="container footer-bottom"><p>© {new Date().getFullYear()} NOUVELLE HOTEL &amp; SPA JONGNO</p><div><a href={localePath(locale, 'privacy/')}>{m.common.privacy}</a><a href={localePath(locale, 'terms/')}>{m.common.terms}</a></div></div>
+  <div class="container footer-bottom"><p>© {new Date().getFullYear()} {officialEnglishName.toUpperCase()}</p><div><a href={localePath(locale, 'privacy/')}>{m.common.privacy}</a><a href={localePath(locale, 'terms/')}>{m.common.terms}</a></div></div>
 </footer>
-<aside class="mobile-booking" aria-label={m.common.quickBooking}><span>NOUVELLE <small>HOTEL &amp; SPA</small></span><BookingButton locale={locale} /></aside>
+<aside class="mobile-booking" aria-label={m.common.quickBooking}><span>{brandWordmark.toUpperCase()} <small>{brandCaption}</small></span><BookingButton locale={locale} /></aside>
