@@ -17,6 +17,7 @@ const graph: Record<string, unknown>[] = [{ '@type': 'Hotel', '@id': `${root}#ho
 if (breadcrumbs.length) graph.push({ '@type': 'BreadcrumbList', itemListElement: [{ label: m.common.nav.home, path: '' }, ...breadcrumbs].map((item, index) => ({ '@type': 'ListItem', position: index + 1, name: item.label, item: new URL(localePath(locale, item.path), site).href })) });
 ---
 <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="naver-site-verification" content="6fb989dfe7834b5fd4c97f2a57812fd9200a062b" />
 <title>{documentTitle}</title><meta name="description" content={description} /><link rel="canonical" href={canonical} />
 {!noindex && publishedLocales.map(item => <link rel="alternate" hreflang={localeMeta[item].htmlLang} href={new URL(localePath(item, routePath), site).href} />)}
 {!noindex && <link rel="alternate" hreflang="x-default" href={new URL(localePath('ko', routePath), site).href} />}
